@@ -1,0 +1,4130 @@
+{
+ "meta": {
+  "version": "1.0.5",
+  "last_reviewed": "2026-11-23",
+  "region": "US",
+  "tesla_note": "CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not).",
+  "title": "US EV Charging Network Compatibility Matrix",
+  "description": "Which EV charging apps and car brands work with which US charging networks: Tesla Supercharger, Electrify America, IONNA, EVgo, ChargePoint, Walmart and more. Covers Plug & Charge, in-car and in-app access."
+ },
+ "statuses": {
+  "PC": {
+   "label": "Plug & Charge",
+   "short": "P&C",
+   "desc": "The car and charger negotiate digital certificates when you plug in. No app, card or screen interaction needed (ISO 15118, or a network's equivalent such as EVgo Autocharge+)."
+  },
+  "BOTH": {
+   "label": "In-car + app",
+   "short": "Car + app",
+   "desc": "Start and pay from the car's infotainment screen and from the automaker's smartphone app."
+  },
+  "APP": {
+   "label": "In-app",
+   "short": "App",
+   "desc": "Start and pay from the automaker's or app's smartphone app, using the card on file in that account."
+  },
+  "ROAM": {
+   "label": "Roaming",
+   "short": "Roam",
+   "desc": "Works through a roaming agreement between networks (RFID card or partner app) rather than a direct integration."
+  },
+  "NO": {
+   "label": "Not integrated",
+   "short": "None",
+   "desc": "No direct integration. Use the network's own app, a card or tap-to-pay at the charger."
+  }
+ },
+ "networks": [
+  {
+   "id": "tesla",
+   "name": "Tesla Supercharger",
+   "short": "Tesla",
+   "type": "DC fast (NACS)",
+   "url": "https://www.tesla.com/supercharger",
+   "about": "The largest US DC fast network, with roughly 40,000 stalls (about half of US DC fast ports, Oct 2026). Nearly every EV brand now has access: newer models with a native NACS port plug in directly, while CCS1 cars need an approved adapter. Sessions start in the Tesla app, your automaker's app, or with Plug & Charge where the car supports it.",
+   "sources": [
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    },
+    {
+     "label": "TheChargePort, Supercharger access by brand (Oct 20, 2026)",
+     "url": "https://thechargeport.com/supercharger-access"
+    },
+    {
+     "label": "InsideEVs, non-Tesla EVs that can use Superchargers (updated Mar 20, 2026)",
+     "url": "https://insideevs.com/news/735724/non-tesla-ev-tesla-supercharger-access/"
+    },
+    {
+     "label": "Automotive World, Volvo launches Plug & Charge for EX60 and EX90 in the US (Jun 18, 2026)",
+     "url": "https://www.automotiveworld.com/news/volvo-launches-plug-charge-for-ex60-and-ex90-in-us/"
+    },
+    {
+     "label": "Electrek, Volvo public EV charging for EX90 and EX60 (Jun 18, 2026)",
+     "url": "https://electrek.co/2026/06/18/volvo-public-ev-charging-ex90-ex60/"
+    },
+    {
+     "label": "electrive, Volvo adds Plug & Charge to EX90 and upcoming EX60 (Jun 19, 2026)",
+     "url": "https://electrive.com/2026/06/19/usa-volvo-adds-plug-charge-to-ex90-and-upcoming-ex60"
+    },
+    {
+     "label": "Motor1, Volvo Just Made Charging Your EV Way Easier (Jun 21, 2026)",
+     "url": "https://www.motor1.com/news/799192/volvo-evs-plug-charge-fast/"
+    },
+    {
+     "label": "InsideEVs, The Volvo EX60 And EX90 Get An Important EV Fast-Charging Upgrade (reports the 2025 EX90 update as free)",
+     "url": "https://insideevs.com/news/799188/volvo-ex60-ex90-ev-plug-and-charge/"
+    }
+   ]
+  },
+  {
+   "id": "ea",
+   "name": "Electrify America",
+   "short": "Electrify America",
+   "type": "DC fast (CCS, NACS pilot)",
+   "url": "https://www.electrifyamerica.com/",
+   "about": "Volkswagen Group's network: about 6,000 ports at roughly 1,190 locations, up to 350 kW. It is converting selected CCS connectors to NACS and opened its first all-NACS stations in California in summer 2026. Plug & Charge is widely supported.",
+   "sources": [
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    },
+    {
+     "label": "electrive, Electrify America expands NACS pilot (Jul 1, 2026)",
+     "url": "https://www.electrive.com/2026/07/01/electrify-america-expands-nacs-pilot-to-major-charging-hubs/"
+    },
+    {
+     "label": "GM / Electrek, GM Energy Pass Plug & Charge at Electrify America (2026)",
+     "url": "https://www.gm.com/"
+    }
+   ]
+  },
+  {
+   "id": "ionna",
+   "name": "IONNA",
+   "short": "IONNA",
+   "type": "High-power DC (NACS + CCS)",
+   "url": "https://www.ionna.com/",
+   "about": "A joint venture of BMW, GM, Honda, Hyundai, Kia, Mercedes-Benz, Stellantis and Toyota, with about 1,700 stalls and a goal of 30,000 by 2030. Bays offer both NACS and CCS cables at up to 400 kW. Anyone can pay with a card, Apple Pay, Google Pay or the IONNA, ChargePoint, EV Connect, Presto or ChargeHub apps. ChargePoint RFID cards and Tap to Charge do not work.",
+   "sources": [
+    {
+     "label": "IONNA FAQ, which charging apps work at a Rechargery",
+     "url": "https://www.ionna.com/faq/what-charging-apps-work-at-an-ionna-rechargery/"
+    },
+    {
+     "label": "IONNA FAQ, how to pay for charging",
+     "url": "https://www.ionna.com/faq/how-can-i-pay-for-charging/"
+    },
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    },
+    {
+     "label": "ChargeHub, IONNA now compatible with the ChargeHub app (Jun 10, 2026; updated Aug 4, 2026)",
+     "url": "https://chargehub.com/en/ev-charging-news/ionna-now-compatible-with-chargehub-app"
+    },
+    {
+     "label": "Automotive World, Volvo launches Plug & Charge for EX60 and EX90 in the US (Jun 18, 2026)",
+     "url": "https://www.automotiveworld.com/news/volvo-launches-plug-charge-for-ex60-and-ex90-in-us/"
+    },
+    {
+     "label": "Electrek, Volvo public EV charging for EX90 and EX60 (Jun 18, 2026)",
+     "url": "https://electrek.co/2026/06/18/volvo-public-ev-charging-ex90-ex60/"
+    },
+    {
+     "label": "electrive, Volvo adds Plug & Charge to EX90 and upcoming EX60 (Jun 19, 2026)",
+     "url": "https://electrive.com/2026/06/19/usa-volvo-adds-plug-charge-to-ex90-and-upcoming-ex60"
+    },
+    {
+     "label": "Motor1, Volvo Just Made Charging Your EV Way Easier (Jun 21, 2026)",
+     "url": "https://www.motor1.com/news/799192/volvo-evs-plug-charge-fast/"
+    },
+    {
+     "label": "InsideEVs, The Volvo EX60 And EX90 Get An Important EV Fast-Charging Upgrade (reports the 2025 EX90 update as free)",
+     "url": "https://insideevs.com/news/799188/volvo-ex60-ex90-ev-plug-and-charge/"
+    },
+    {
+     "label": "IONNA / Electrek, Tesla Autocharge / Plug & Charge via Presto (Nov 2026)",
+     "url": "https://www.ionna.com/"
+    }
+   ]
+  },
+  {
+   "id": "evgo",
+   "name": "EVgo",
+   "short": "EVgo",
+   "type": "DC fast & L2",
+   "url": "https://www.evgo.com/",
+   "about": "Metro-focused DC fast network with about 5,300 ports (100–350 kW). Autocharge+ is EVgo's plug-and-charge feature, which identifies the car and bills your EVgo account; GM also has native Plug & Charge. NACS connectors are being added alongside CCS.",
+   "sources": [
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    },
+    {
+     "label": "InsideEVs, EVgo Plug & Charge expansion",
+     "url": "https://insideevs.com/news/715603/evgo-plug-and-charge-expansion/"
+    },
+    {
+     "label": "CleanTechnica, GM Energy Pass (Jun 9, 2026)",
+     "url": "https://cleantechnica.com/2026/06/09/gm-energy-pass-one-universal-interface-for-public-charging/"
+    }
+   ]
+  },
+  {
+   "id": "chargepoint",
+   "name": "ChargePoint",
+   "short": "ChargePoint",
+   "type": "DC fast & L2",
+   "url": "https://www.chargepoint.com/",
+   "about": "The largest US network by ports (about 84,000 public ports, mostly Level 2), with site hosts owning the hardware. It underpins Mercedes-Benz's public charging account and several automaker roaming integrations. The ChargePoint app works at IONNA.",
+   "sources": [
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    },
+    {
+     "label": "IONNA FAQ, which charging apps work at a Rechargery",
+     "url": "https://www.ionna.com/faq/what-charging-apps-work-at-an-ionna-rechargery/"
+    }
+   ]
+  },
+  {
+   "id": "blink",
+   "name": "Blink Charging",
+   "short": "Blink",
+   "type": "DC fast & L2",
+   "url": "https://blinkcharging.com/",
+   "about": "About 22,400 public ports (roughly 2,000 DC fast, about two-thirds of fast sites at car dealerships). Part of Ford's BlueOval Charge Network since 2023; Genesis lists it as coming soon.",
+   "sources": [
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    },
+    {
+     "label": "Automotive Fleet, Ford adds Francis Energy, Blink and Red E (Nov 2023)",
+     "url": "https://www.automotive-fleet.com/news/ford-expands-charging-providers-to-surpass-106000-chargers"
+    },
+    {
+     "label": "Genesis Owners, In-App Charging FAQ",
+     "url": "https://owners.genesis.com/us/en/resources/general-information/iac-app-faqs.html"
+    }
+   ]
+  },
+  {
+   "id": "flo",
+   "name": "FLO",
+   "short": "FLO",
+   "type": "DC fast & L2",
+   "url": "https://www.flo.com/",
+   "about": "North American network operating Level 2 and DC fast chargers in the US and Canada. Part of Ford's BlueOval Charge Network and supported in Genesis In-App Charging.",
+   "sources": [
+    {
+     "label": "Ford, IONNA joins the BlueOval Charge Network (Mar 20, 2025)",
+     "url": "https://www.macheforum.com/site/threads/blueoval-charge-network-adds-ionna.43926/latest"
+    },
+    {
+     "label": "Genesis Owners, In-App Charging FAQ",
+     "url": "https://owners.genesis.com/us/en/resources/general-information/iac-app-faqs.html"
+    }
+   ]
+  },
+  {
+   "id": "shell",
+   "name": "Shell Recharge",
+   "short": "Shell Recharge",
+   "type": "Roaming platform, L2 & DC fast",
+   "url": "",
+   "about": "In the US, Shell Recharge is now mainly a roaming and billing platform. Shell agreed in Nov 2025 to sell most of the Volta network to Jolt (closing expected Jan 1, 2026). A Shell Recharge account handles billing for BMW's My BMW app and Plug & Charge.",
+   "sources": [
+    {
+     "label": "CStore Dive, Shell to sell Volta chargers to Jolt (Nov 2025)",
+     "url": "https://www.cstoredive.com/news/shell-sell-volta-electric-vehicle-charging-jolt/805493/"
+    },
+    {
+     "label": "electrive, BMW EVs gain Supercharger access (Dec 10, 2025)",
+     "url": "https://www.electrive.com/2025/12/10/bmw-evs-gain-supercharger-access-in-north-america"
+    }
+   ]
+  },
+  {
+   "id": "evconnect",
+   "name": "EV Connect",
+   "short": "EV Connect",
+   "type": "DC fast & L2",
+   "url": "",
+   "about": "Software-focused network owned by Schneider Electric, with about 1,600 DC fast and 2,900 Level 2 ports where site owners set prices. Works at IONNA through the EV Connect app; Plug & Charge is offered to GM EV owners at supported stations.",
+   "sources": [
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    },
+    {
+     "label": "IONNA FAQ, which charging apps work at a Rechargery",
+     "url": "https://www.ionna.com/faq/what-charging-apps-work-at-an-ionna-rechargery/"
+    }
+   ]
+  },
+  {
+   "id": "francis",
+   "name": "Francis Energy",
+   "short": "Francis Energy",
+   "type": "DC fast",
+   "url": "",
+   "about": "About 790 DC fast ports, strong in Oklahoma, the central US and rural corridors. Joined Ford's BlueOval Charge Network in 2023.",
+   "sources": [
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    },
+    {
+     "label": "Automotive Fleet, Ford adds Francis Energy, Blink and Red E (Nov 2023)",
+     "url": "https://www.automotive-fleet.com/news/ford-expands-charging-providers-to-surpass-106000-chargers"
+    }
+   ]
+  },
+  {
+   "id": "bppulse",
+   "name": "bp pulse",
+   "short": "bp pulse",
+   "type": "DC fast",
+   "url": "",
+   "about": "bp's US fast-charging arm, with about 850 DC fast ports including Gigahub sites. It is a Ford BlueOval Charge Network partner, and Ford reported Plug & Charge live at its 150 kW chargers in Aug 2026 (the 400 kW units already had it). Presto announced a collaboration for commercial drivers in May 2026, and the Octopus Charge and ChargeHub apps list it as partners (ChargeHub activation went live Aug 24, 2026).",
+   "sources": [
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    },
+    {
+     "label": "Ford, What is the Ford BlueOval Charge Network? (partner list, data dated Apr 2026)",
+     "url": "https://www.ford.com/support/how-tos/electric-vehicles/blueoval-charge-network/what-is-the-ford-blueoval-charge-network"
+    },
+    {
+     "label": "Ford Authority, Ford EV owners can now use Plug & Charge at bp pulse chargers (Sep 2, 2026)",
+     "url": "https://fordauthority.com/2026/09/ford-ev-owners-can-now-use-plug-charge-at-bp-pulse-chargers/"
+    },
+    {
+     "label": "S&P Global, Presto and bp pulse collaboration (May 28, 2026)",
+     "url": "https://autotechinsight.spglobal.com/news/5288530/presto-and-bp-pulse-collaborate-to-expand-fast-charging-access-for-commercial-ev-drivers-in-us"
+    },
+    {
+     "label": "electrive, Octopus Charge brings an Electroverse-style app to North America (Aug 19, 2026)",
+     "url": "https://www.electrive.com/2026/08/19/octopus-charge-brings-electroverse-style-app-to-north-america/"
+    },
+    {
+     "label": "ChargeHub, bp pulse is now available in the ChargeHub app (Aug 24, 2026)",
+     "url": "https://chargehub.com/en/ev-charging-news/bp-pulse-chargehub-app"
+    },
+    {
+     "label": "NACS Daily, BP Pulse joins ChargeHub's Passport Hub network (Oct 30, 2026)",
+     "url": "https://convenience.org/stay-current/news/2026/october/30/bp-pulse-joins-chargehub%E2%80%99s-passport-hub-network"
+    }
+   ]
+  },
+  {
+   "id": "ran",
+   "name": "Rivian Adventure Network",
+   "short": "Rivian RAN",
+   "type": "DC fast",
+   "url": "https://rivian.com/experience/charging",
+   "about": "About 1,200 DC ports. More than 75% of the network was open to all EVs by Aug 2025, and sites are adding native NACS connectors alongside CCS. Rivian vehicles get Plug & Charge.",
+   "sources": [
+    {
+     "label": "Rivian, Adventure Network update (Aug 2025)",
+     "url": "https://rivian.com/stories/rivian-adventure-network-08-2025"
+    },
+    {
+     "label": "Rivian Trackr, networks that support Rivian Plug & Charge (Sep 2026)",
+     "url": "https://riviantrackr.com/news/rivian-plug-and-charge-supported-networks/"
+    },
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    }
+   ]
+  },
+  {
+   "id": "mercedes",
+   "name": "Mercedes-Benz HPC",
+   "short": "Mercedes HPC",
+   "type": "High-power DC",
+   "url": "https://www.mercedesbenzhpc.com/",
+   "about": "Mercedes-Benz's premium hubs (about 750 ports, up to 400 kW) are open to all EV drivers. Mercedes owners get reservations and Plug & Charge in the Mercedes-Benz app. Hosts include Starbucks, Buc-ee's and Simon properties.",
+   "sources": [
+    {
+     "label": "Mercedes-Benz USA, EV charging stations",
+     "url": "https://www.mbusa.com/en/ev-charging-stations"
+    },
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    }
+   ]
+  },
+  {
+   "id": "rede",
+   "name": "Red E",
+   "short": "Red E",
+   "type": "DC fast & L2",
+   "url": "",
+   "about": "Detroit-based network with about 2,200 DC fast and 2,600 Level 2 ports across roughly 590 small sites. \"Red E Go\", launched in September 2026, starts and bills a session when you plug in after a one-time registration.",
+   "sources": [
+    {
+     "label": "TheChargePort, EV charging networks (data verified Oct 20, 2026)",
+     "url": "https://thechargeport.com/ev-charging-networks"
+    }
+   ]
+  },
+  {
+   "id": "powerflex",
+   "name": "PowerFlex",
+   "short": "PowerFlex",
+   "type": "Workplace & DC",
+   "url": "",
+   "about": "Workplace and fleet charging provider with some public sites. Little current public information on roaming; treat integrations as unverified and check in your app.",
+   "sources": []
+  },
+  {
+   "id": "walmart",
+   "name": "Walmart",
+   "short": "Walmart",
+   "type": "DC fast (NACS + CCS)",
+   "url": "https://corporate.walmart.com/",
+   "about": "Walmart's own network: 100 company-owned sites in 20 states as of Aug 21, 2026, typically 8–16 stalls at up to 400 kW with both CCS and NACS connectors. Drivers start and pay in the Walmart app; Walmart+ members get discounted rates. No automaker or roaming integrations have been announced.",
+   "sources": [
+    {
+     "label": "Walmart, 100th EV fast-charging site (Aug 21, 2026)",
+     "url": "https://corporate.walmart.com/news/2026/08/21/walmart-energizes-100th-store-with-ev-fast-charging-in-monument-co"
+    }
+   ]
+  }
+ ],
+ "sheets": {
+  "apps": {
+   "title": "Charging apps",
+   "heading": "EV charging apps and the networks they unlock",
+   "entity_label": "App / platform",
+   "entity_singular": "app",
+   "entity_plural": "apps",
+   "categories": {
+    "OEM": "Automaker app",
+    "Aggregator": "Aggregator",
+    "CPO": "Network app"
+   },
+   "rows": [
+    {
+     "id": "ford",
+     "name": "Ford App (BlueOval™)",
+     "owner": "Ford Motor Co.",
+     "category": "OEM",
+     "notes": "Ford app (formerly FordPass) with the BlueOval Charge Network: Tesla, IONNA, Electrify America, ChargePoint, EVgo, Blink, FLO, bp pulse and more, on one payment method.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge / In-App. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge (ISO 15118) and in-app remote start via BlueOval."
+      ],
+      "ionna": [
+       "PC",
+       "Plug & Charge, or start in the Ford app / SYNC Public Charging app. Ford joined through the BlueOval Charge Network in Mar 2025; it is not an IONNA founding member."
+      ],
+      "evgo": [
+       "APP",
+       "In-app activation and billing via BlueOval account. You can also start it from the SYNC screen in the car."
+      ],
+      "chargepoint": [
+       "APP",
+       "In-app activation across ChargePoint network. You can also start it from the SYNC screen in the car."
+      ],
+      "blink": [
+       "APP",
+       "In-app activation and BlueOval account billing. You can also start it from the SYNC screen in the car."
+      ],
+      "flo": [
+       "APP",
+       "In-app activation and seamless roaming. You can also start it from the SYNC screen in the car."
+      ],
+      "shell": [
+       "APP",
+       "In-app activation on Shell Recharge Solutions. You can also start it from the SYNC screen in the car."
+      ],
+      "evconnect": [
+       "APP",
+       "In-app activation via cloud OCPI. You can also start it from the SYNC screen in the car."
+      ],
+      "francis": [
+       "APP",
+       "Full BlueOval partner corridor roaming. You can also start it from the SYNC screen in the car."
+      ],
+      "bppulse": [
+       "PC",
+       "bp pulse is a BlueOval Charge Network partner on Ford's own list (Apr 2026). Plug & Charge is live at bp pulse 150 kW chargers as of Aug 2026, and the 400 kW chargers had it earlier (Ford Authority, citing a Ford engineer). You can also start a session from the Ford app or the SYNC screen. Ford has not published which models or software versions get Plug & Charge."
+      ],
+      "ran": [
+       "NO",
+       "Rivian RAN opening to select OEMs; direct app currently required."
+      ],
+      "mercedes": [
+       "APP",
+       "Integrated partner network roaming. You can also start it from the SYNC screen in the car."
+      ],
+      "rede": [
+       "APP",
+       "Integrated BlueOval partner in-app activation. You can also start it from the SYNC screen in the car."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex is not on Ford's BlueOval Charge Network partner list (Apr 2026)."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "gm",
+     "name": "myChevrolet / myGMC / myCadillac (GM Energy Pass)",
+     "owner": "General Motors",
+     "category": "OEM",
+     "notes": "GM Energy Pass (launched Jun 2026) covers Tesla Supercharger, IONNA, Electrify America and ChargePoint, with EVgo coming. Plug & Charge is live at IONNA, EVgo, and Electrify America (native CCS ports; native NACS scheduled early 2027); reports differ on ChargePoint.",
+     "status": {
+      "tesla": [
+       "APP",
+       "In-app through GM Energy Pass (Jun 2026). Plug & Charge works on NACS-native GM EVs; an over-the-air update for other NACS-capable GM EVs was promised for later in 2026. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge via GM Energy Pass is live for GM EVs with native CCS ports (native NACS-port GM EVs scheduled for early 2027)."
+      ],
+      "ionna": [
+       "PC",
+       "Founding member. Plug & Charge, or start in GM Energy Pass (myChevrolet, myGMC, myCadillac). GM says Energy Pass members get 10% off at IONNA."
+      ],
+      "evgo": [
+       "PC",
+       "Native GM Plug & Charge partnership and in-app start."
+      ],
+      "chargepoint": [
+       "APP",
+       "In-app remote activation across ChargePoint network."
+      ],
+      "blink": [
+       "APP",
+       "In-app activation via GM Energy integration."
+      ],
+      "flo": [
+       "APP",
+       "In-app activation via Canadian/US roaming."
+      ],
+      "shell": [
+       "APP",
+       "In-app activation on Shell Recharge."
+      ],
+      "evconnect": [
+       "APP",
+       "Integrated partner in GM Energy Pass."
+      ],
+      "francis": [
+       "APP",
+       "Integrated corridor partner in-app activation."
+      ],
+      "bppulse": [
+       "APP",
+       "Select partner roaming."
+      ],
+      "ran": [
+       "NO",
+       "RAN network exclusive or native Rivian app."
+      ],
+      "mercedes": [
+       "NO",
+       "Credit card reader or Mercedes app."
+      ],
+      "rede": [
+       "NO",
+       "Third-party app or kiosk payment required."
+      ],
+      "powerflex": [
+       "APP",
+       "Select commercial locations."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "rivian",
+     "name": "Rivian App",
+     "owner": "Rivian Automotive",
+     "category": "OEM",
+     "notes": "Rivian Charging Platform. Native vehicle routing with automatic preconditioning.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge / In-app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge (ISO 15118) and in-app activation."
+      ],
+      "ionna": [
+       "PC",
+       "Plug & Charge added to Rivian software in 2025; native NACS cable at each bay, so no adapter is needed."
+      ],
+      "evgo": [
+       "APP",
+       "In-app remote start via Rivian account."
+      ],
+      "chargepoint": [
+       "APP",
+       "In-app remote start via Rivian account."
+      ],
+      "blink": [
+       "NO",
+       "Blink app or card reader required."
+      ],
+      "flo": [
+       "APP",
+       "Select roaming locations in app."
+      ],
+      "shell": [
+       "APP",
+       "Select roaming locations in app."
+      ],
+      "evconnect": [
+       "NO",
+       "Separate app required."
+      ],
+      "francis": [
+       "NO",
+       "Separate app required."
+      ],
+      "bppulse": [
+       "NO",
+       "Separate app required."
+      ],
+      "ran": [
+       "PC",
+       "Native Rivian Adventure Network Plug & Charge."
+      ],
+      "mercedes": [
+       "NO",
+       "Separate app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Separate app required."
+      ],
+      "powerflex": [
+       "NO",
+       "Separate app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "tesla_app",
+     "name": "Tesla App",
+     "owner": "Tesla, Inc.",
+     "category": "OEM",
+     "notes": "Tesla Supercharging & Destination Charging; also allows non-Tesla EVs at Magic Dock stalls.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Native Plug & Charge (Tesla vehicles) or in-app start (Non-Tesla at Magic Dock)."
+      ],
+      "ea": [
+       "NO",
+       "Electrify America app or card reader required."
+      ],
+      "ionna": [
+       "NO",
+       "Not via the Tesla app; Tesla vehicles can use Autocharge / Plug & Charge at IONNA via Presto setup (Nov 2026), or pay with a card at the charger."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app or Autocharge+ required."
+      ],
+      "chargepoint": [
+       "NO",
+       "ChargePoint app or tap to pay required."
+      ],
+      "blink": [
+       "NO",
+       "Blink app or card reader required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app or card reader required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes HPC kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "mercedes_me",
+     "name": "Mercedes me connect",
+     "owner": "Mercedes-Benz USA",
+     "category": "OEM",
+     "notes": "Mercedes me Charge ecosystem with MBUX in-car navigation integration.",
+     "status": {
+      "tesla": [
+       "APP",
+       "In-app start via Mercedes me. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge (ISO 15118) and Mercedes me billing."
+      ],
+      "ionna": [
+       "PC",
+       "Founding member. Plug & Charge or the Mercedes-Benz app. Member discounts need in-app start or Plug & Charge, not a credit card. A few models (e.g., 2025–26 G580e) are excluded."
+      ],
+      "evgo": [
+       "PC",
+       "Plug & Charge (ISO 15118) and Mercedes me billing."
+      ],
+      "chargepoint": [
+       "APP",
+       "ChargePoint roaming partnership & MBUX payment."
+      ],
+      "blink": [
+       "NO",
+       "Separate app or card reader."
+      ],
+      "flo": [
+       "APP",
+       "Select roaming via ChargePoint hub."
+      ],
+      "shell": [
+       "NO",
+       "Separate app or card reader."
+      ],
+      "evconnect": [
+       "NO",
+       "Separate app required."
+      ],
+      "francis": [
+       "NO",
+       "Separate app required."
+      ],
+      "bppulse": [
+       "NO",
+       "Separate app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "PC",
+       "Native Mercedes-Benz HPC charging with 6 months free."
+      ],
+      "rede": [
+       "NO",
+       "Separate app required."
+      ],
+      "powerflex": [
+       "NO",
+       "Separate app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "bmw",
+     "name": "My BMW App",
+     "owner": "BMW of North America",
+     "category": "OEM",
+     "notes": "BMW Charging with billing through Shell Recharge: about 180,000 North American points including IONNA, Electrify America, ChargePoint, EVgo and Tesla Superchargers (Dec 2025).",
+     "status": {
+      "tesla": [
+       "APP",
+       "Access since Dec 10, 2025. Superchargers show in navigation and the My BMW app, billed via a Shell Recharge account; Plug & Charge works on compatible vehicles once activated. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge (ISO 15118) with included BMW EA plan."
+      ],
+      "ionna": [
+       "PC",
+       "Founding member. Plug & Charge on BMW and MINI model year 2024+, billed through a Shell Recharge account created in the My BMW app."
+      ],
+      "evgo": [
+       "APP",
+       "In-app activation via Shell roaming alliance."
+      ],
+      "chargepoint": [
+       "APP",
+       "In-app activation & BMW Charging card."
+      ],
+      "blink": [
+       "APP",
+       "Select roaming via Shell alliance."
+      ],
+      "flo": [
+       "APP",
+       "Select roaming via ChargePoint hub."
+      ],
+      "shell": [
+       "APP",
+       "Primary US BMW Charging roaming platform."
+      ],
+      "evconnect": [
+       "APP",
+       "Roaming via Shell Recharge partnership."
+      ],
+      "francis": [
+       "NO",
+       "Separate app required."
+      ],
+      "bppulse": [
+       "NO",
+       "Separate app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Separate app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Separate app required."
+      ],
+      "powerflex": [
+       "NO",
+       "Separate app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "hyundai",
+     "name": "MyHyundai (Bluelink)",
+     "owner": "Hyundai Motor America",
+     "category": "OEM",
+     "notes": "Hyundai Charge Pass & NACS transition; partnership with ChargePoint & EA.",
+     "status": {
+      "tesla": [
+       "APP",
+       "In-app start via Bluelink. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "APP",
+       "Complimentary charging promo codes via EA integration."
+      ],
+      "ionna": [
+       "PC",
+       "Founding member. Plug & Charge on IONIQ 5/5 N 2025+ and IONIQ 9 2026+; MyHyundai with Bluelink start on other models. Discounts need in-app start or Plug & Charge."
+      ],
+      "evgo": [
+       "APP",
+       "Select roaming in Bluelink via ChargeHub."
+      ],
+      "chargepoint": [
+       "APP",
+       "ChargePoint in-app payment integration."
+      ],
+      "blink": [
+       "NO",
+       "Separate app required."
+      ],
+      "flo": [
+       "APP",
+       "ChargePoint roaming partnership."
+      ],
+      "shell": [
+       "NO",
+       "Separate app required."
+      ],
+      "evconnect": [
+       "NO",
+       "Separate app required."
+      ],
+      "francis": [
+       "NO",
+       "Separate app required."
+      ],
+      "bppulse": [
+       "NO",
+       "Separate app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Separate app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Separate app required."
+      ],
+      "powerflex": [
+       "NO",
+       "Separate app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "kia",
+     "name": "Kia Access",
+     "owner": "Kia America",
+     "category": "OEM",
+     "notes": "Kia Charge Pass inside the Kia Access app. Plug & Charge on 2025+ EV6 and 2026+ EV9. Electrify America Kia Charge Pass enrollment ended 12/31/2025.",
+     "status": {
+      "tesla": [
+       "APP",
+       "In-app start via Kia Access. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "APP",
+       "Electrify America 1,000 kWh promo & enrollment."
+      ],
+      "ionna": [
+       "PC",
+       "Founding member. Plug & Charge on EV6 2025+ and EV9 2026+; Kia Access app start on other models."
+      ],
+      "evgo": [
+       "APP",
+       "Select roaming via ChargePoint."
+      ],
+      "chargepoint": [
+       "APP",
+       "Kia Charge Pass integration with ChargePoint."
+      ],
+      "blink": [
+       "NO",
+       "Separate app required."
+      ],
+      "flo": [
+       "APP",
+       "ChargePoint roaming partnership."
+      ],
+      "shell": [
+       "NO",
+       "Separate app required."
+      ],
+      "evconnect": [
+       "NO",
+       "Separate app required."
+      ],
+      "francis": [
+       "NO",
+       "Separate app required."
+      ],
+      "bppulse": [
+       "NO",
+       "Separate app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Separate app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Separate app required."
+      ],
+      "powerflex": [
+       "NO",
+       "Separate app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "genesis",
+     "name": "Genesis Intelligent Assistant",
+     "owner": "Genesis Motor America",
+     "category": "OEM",
+     "notes": "Genesis Intelligent Assistant app with In-App Charging at IONNA, Tesla, Shell, ChargePoint, EVgo, EV Connect and FLO; Blink and Electrify America listed as coming soon.",
+     "status": {
+      "tesla": [
+       "APP",
+       "In-app start via Genesis Connected. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "NO",
+       "Genesis lists Electrify America as \"coming soon\" for In-App Charging; use the Electrify America app."
+      ],
+      "ionna": [
+       "PC",
+       "Plug & Charge on GV60 and Electrified GV70 (2026+). Genesis discounts need in-app charging or Plug & Charge."
+      ],
+      "evgo": [
+       "APP",
+       "Select roaming via ChargePoint."
+      ],
+      "chargepoint": [
+       "APP",
+       "In-app payment and station locating."
+      ],
+      "blink": [
+       "NO",
+       "Separate app required."
+      ],
+      "flo": [
+       "APP",
+       "ChargePoint roaming."
+      ],
+      "shell": [
+       "APP",
+       "Shell stations are supported in Genesis In-App Charging."
+      ],
+      "evconnect": [
+       "APP",
+       "EV Connect stations are supported in Genesis In-App Charging."
+      ],
+      "francis": [
+       "NO",
+       "Separate app required."
+      ],
+      "bppulse": [
+       "NO",
+       "Separate app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Separate app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Separate app required."
+      ],
+      "powerflex": [
+       "NO",
+       "Separate app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "vw",
+     "name": "myVW App",
+     "owner": "Volkswagen of America",
+     "category": "OEM",
+     "notes": "Volkswagen ID.4 / ID.Buzz integration with Electrify America.",
+     "status": {
+      "tesla": [
+       "NO",
+       "Per InsideEVs (Mar 2026) VW Plug & Charge does not work at Superchargers; use the Tesla app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge (ISO 15118) and complimentary EA plan."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app required."
+      ],
+      "chargepoint": [
+       "NO",
+       "ChargePoint app required."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "audi",
+     "name": "myAudi App",
+     "owner": "Audi of America",
+     "category": "OEM",
+     "notes": "Audi charging service & e-tron Plug & Charge.",
+     "status": {
+      "tesla": [
+       "APP",
+       "In-app activation. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not). The Audi Q4 e-tron is not supported (TheChargePort, Oct 2026)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge (ISO 15118) and credits on EA."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app required."
+      ],
+      "chargepoint": [
+       "NO",
+       "ChargePoint app required."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "porsche",
+     "name": "My Porsche App",
+     "owner": "Porsche Cars NA",
+     "category": "OEM",
+     "notes": "My Porsche app (Porsche Charging Service) added ChargePoint and its roaming partners in May 2025. Plug & Charge at Electrify America, IONNA and, since Jan 2026, Tesla Superchargers.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge added to the My Porsche app in Jan 2026 (Macan Electric, 2026 Taycan, Cayenne Electric). CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge (ISO 15118) & included Taycan charging."
+      ],
+      "ionna": [
+       "PC",
+       "Plug & Charge and the My Porsche app are both supported at IONNA."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app required."
+      ],
+      "chargepoint": [
+       "APP",
+       "Select roaming via Porsche Destination Network."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "volvo",
+     "name": "Volvo Cars App",
+     "owner": "Volvo Car USA",
+     "category": "OEM",
+     "notes": "Volvo Public Charging Service in the Volvo Cars app (120,000+ points) with Google built-in navigation; Plug & Charge on the EX90 (live) and EX60 (at US launch), at Tesla Superchargers and IONNA.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge on the EX90 (live) and EX60 (at US launch) once activated. A 2025 EX90 needs the newer NVIDIA Orin computer; InsideEVs says Volvo fits it free at a service visit. Other models start in the Volvo Cars app. EX90 (CCS1) needs an approved NACS adapter; EX60 has a native NACS port. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "APP",
+       "Electrify America partner access and credit integration."
+      ],
+      "ionna": [
+       "PC",
+       "Plug & Charge on the EX90 (live) and EX60 (at US launch) once activated. A 2025 EX90 needs the newer NVIDIA Orin computer; InsideEVs says Volvo fits it free at a service visit. Volvo Cars app start on other models."
+      ],
+      "evgo": [
+       "APP",
+       "Select roaming via ChargePoint partnership."
+      ],
+      "chargepoint": [
+       "APP",
+       "ChargePoint in-app payment and account linking."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "ChargePoint roaming partnership."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "polestar",
+     "name": "Polestar App",
+     "owner": "Polestar USA",
+     "category": "OEM",
+     "notes": "Polestar Charge with ChargePoint roaming & Google built-in integration.",
+     "status": {
+      "tesla": [
+       "APP",
+       "In-app start via Polestar app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "APP",
+       "Electrify America promo & in-app link."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "APP",
+       "Select roaming via ChargePoint."
+      ],
+      "chargepoint": [
+       "APP",
+       "Polestar Charge partner integration."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "ChargePoint roaming."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "lucid",
+     "name": "Lucid Mobile App",
+     "owner": "Lucid Motors",
+     "category": "OEM",
+     "notes": "Lucid app and Lucid Wallet with Plug & Charge at Electrify America and Tesla Superchargers; ChargePoint, EVgo and EV Connect use their own apps or on-site payment.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge or the Lucid app, paid from Lucid Wallet. Gravity has a native NACS port; Air needs a Lucid-approved adapter or a Magic Dock stall. V3 or newer sites only."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge (ISO 15118) and complimentary EA plan."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app required."
+      ],
+      "chargepoint": [
+       "NO",
+       "ChargePoint app required."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "nissan",
+     "name": "MyNISSAN App",
+     "owner": "Nissan North America",
+     "category": "OEM",
+     "notes": "MyNISSAN app. The 2026 LEAF has a native NACS port and Plug & Charge at Electrify America; Ariya uses CCS; pre-2026 LEAFs (CHAdeMO) cannot use Superchargers.",
+     "status": {
+      "tesla": [
+       "APP",
+       "In-app activation. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge on the 2026 LEAF (one-time setup in MyNISSAN, announced Oct 2025); in-app start on other models."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "APP",
+       "EVgo network charging partnership integration."
+      ],
+      "chargepoint": [
+       "APP",
+       "Select roaming via ChargePoint."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "toyota",
+     "name": "Toyota App",
+     "owner": "Toyota Motor NA",
+     "category": "OEM",
+     "notes": "Toyota app with Plug & Charge on 2026 BEVs (Superchargers and IONNA live; ChargePoint and EVgo planned per Toyota). Lexus RZ 2026 also supports Plug & Charge.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge on 2026 model-year BEVs after a one-time enrollment in the Toyota app; 2023–25 BEVs need a NACS adapter."
+      ],
+      "ea": [
+       "NO",
+       "EA app required."
+      ],
+      "ionna": [
+       "PC",
+       "Founding member. Plug & Charge on 2026+ Toyota and Lexus EVs (enroll under Charge Info > Charging Networks); Toyota app start on other models."
+      ],
+      "evgo": [
+       "APP",
+       "1-year complimentary charging on EVgo via Toyota app."
+      ],
+      "chargepoint": [
+       "APP",
+       "ChargePoint payment and home station integration."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "ChargePoint roaming."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "subaru",
+     "name": "MySubaru",
+     "owner": "Subaru of America",
+     "category": "OEM",
+     "notes": "Subaru Solterra Connect with EVgo credits and ChargePoint integration.",
+     "status": {
+      "tesla": [
+       "APP",
+       "In-app activation. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "NO",
+       "EA app required."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "APP",
+       "Complimentary charging credits on EVgo network."
+      ],
+      "chargepoint": [
+       "APP",
+       "ChargePoint roaming & home charger integration."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "ChargePoint roaming."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "honda",
+     "name": "HondaLink / Acura EV",
+     "owner": "American Honda Motor",
+     "category": "OEM",
+     "notes": "Honda Prologue & Acura ZDX (built on GM Ultium platform).",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge / In-app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "APP",
+       "Charging credits via HondaLink & EA integration."
+      ],
+      "ionna": [
+       "NO",
+       "Honda is a founding member, but Honda/Acura apps are not on IONNA's list of supported apps or Plug & Charge brands (Oct 2026). Pay with a card, Apple Pay, Google Pay or the IONNA app."
+      ],
+      "evgo": [
+       "PC",
+       "Ultium architecture Plug & Charge on EVgo."
+      ],
+      "chargepoint": [
+       "APP",
+       "HondaLink charging app roaming."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "ChargePoint roaming."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "APP",
+       "Partner network in Honda EV Pocket."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "stellantis",
+     "name": "Free2move Charge",
+     "owner": "Stellantis NA",
+     "category": "OEM",
+     "notes": "Free2move Charge for Jeep, Dodge, Ram, Chrysler and Fiat EVs (Wagoneer S, Jeep Recon, Charger Daytona, Ram REV). Supercharger access announced Mar 2026.",
+     "status": {
+      "tesla": [
+       "APP",
+       "Supercharger access with a Stellantis-approved NACS adapter (announced Mar 2026). Start with Free2move Charge or the Tesla app; Plug & Charge is not supported. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "APP",
+       "Free2move Charge in-app activation."
+      ],
+      "ionna": [
+       "APP",
+       "Founding member. In-app start through Free2move Charge; Plug & Charge is not listed for Stellantis."
+      ],
+      "evgo": [
+       "APP",
+       "Free2move Charge roaming and partner discounts."
+      ],
+      "chargepoint": [
+       "APP",
+       "ChargePoint partnership integration."
+      ],
+      "blink": [
+       "APP",
+       "Free2move partner network."
+      ],
+      "flo": [
+       "APP",
+       "Free2move partner network."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "APP",
+       "Integrated Free2move roaming."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "presto",
+     "name": "Presto (Presto Charging)",
+     "owner": "Presto Tech Inc.",
+     "category": "Aggregator",
+     "notes": "Independent universal charging aggregator; works with all EVs and fleets.",
+     "status": {
+      "tesla": [
+       "NO",
+       "In-app routing only; direct Tesla payment unsupported."
+      ],
+      "ea": [
+       "NO",
+       "Separate EA app or physical credit card required."
+      ],
+      "ionna": [
+       "APP",
+       "Partner network in-app activation."
+      ],
+      "evgo": [
+       "APP",
+       "Direct in-app remote start and Presto wallet billing."
+      ],
+      "chargepoint": [
+       "APP",
+       "Direct in-app remote start across ChargePoint network."
+      ],
+      "blink": [
+       "APP",
+       "Direct in-app remote start and fleet billing."
+      ],
+      "flo": [
+       "APP",
+       "Direct in-app remote start and Presto Pay."
+      ],
+      "shell": [
+       "APP",
+       "Select Shell Recharge locations supported."
+      ],
+      "evconnect": [
+       "APP",
+       "Direct in-app remote start on EV Connect stations."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "Presto and bp pulse announced a collaboration for commercial drivers in May 2026; not confirmed as live for consumers."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "APP",
+       "Full in-app activation on PowerFlex."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "bluedot",
+     "name": "Bluedot",
+     "owner": "Bluedot Technologies",
+     "category": "Aggregator",
+     "notes": "Acquired by Epic Charging in May 2026; the standalone consumer app wound down and the platform now focuses on commercial, fleet, and autonomous EV charging.",
+     "status": {
+      "tesla": [
+       "ROAM",
+       "Card payment via Bluedot Visa (cashback)."
+      ],
+      "ea": [
+       "ROAM",
+       "Card payment via Bluedot Visa (cashback)."
+      ],
+      "ionna": [
+       "NO",
+       "Bluedot card at dispenser reader."
+      ],
+      "evgo": [
+       "APP",
+       "In-app remote start and flat-rate pricing."
+      ],
+      "chargepoint": [
+       "APP",
+       "In-app remote start on ChargePoint stations."
+      ],
+      "blink": [
+       "APP",
+       "In-app remote start on Blink."
+      ],
+      "flo": [
+       "APP",
+       "In-app remote start on FLO."
+      ],
+      "shell": [
+       "APP",
+       "In-app remote start on Shell Recharge."
+      ],
+      "evconnect": [
+       "APP",
+       "In-app remote start on EV Connect."
+      ],
+      "francis": [
+       "NO",
+       "Bluedot card at dispenser reader."
+      ],
+      "bppulse": [
+       "NO",
+       "Bluedot card at dispenser reader."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Bluedot card at dispenser reader."
+      ],
+      "rede": [
+       "NO",
+       "Bluedot card at dispenser reader."
+      ],
+      "powerflex": [
+       "APP",
+       "Direct in-app activation."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "octopus",
+     "name": "Octopus Charge (North America)",
+     "owner": "Octopus Energy US",
+     "category": "Aggregator",
+     "notes": "Free app launched Aug 2026 that finds, starts and pays across 24+ partner networks and 210,000+ chargers in the US and Canada, with no price markup. Follows the same approach as Octopus's European Electroverse platform.",
+     "status": {
+      "tesla": [
+       "NO",
+       "Tesla Superchargers are not integrated in Octopus Charge (North America); use the Tesla app or your automaker's app."
+      ],
+      "ea": [
+       "NO",
+       "EA app or card reader required."
+      ],
+      "ionna": [
+       "NO",
+       "Separate app required."
+      ],
+      "evgo": [
+       "APP",
+       "EVgo is a named Octopus Charge partner network."
+      ],
+      "chargepoint": [
+       "APP",
+       "ChargePoint is a named Octopus Charge partner network."
+      ],
+      "blink": [
+       "APP",
+       "Blink is a named Octopus Charge partner network."
+      ],
+      "flo": [
+       "APP",
+       "FLO is a named Octopus Charge partner network."
+      ],
+      "shell": [
+       "APP",
+       "Shell Recharge is a named Octopus Charge partner network."
+      ],
+      "evconnect": [
+       "APP",
+       "EV Connect is a named Octopus Charge partner network."
+      ],
+      "francis": [
+       "NO",
+       "Separate app required."
+      ],
+      "bppulse": [
+       "APP",
+       "bp pulse is a named Octopus Charge partner network."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Separate app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Separate app required."
+      ],
+      "powerflex": [
+       "NO",
+       "Separate app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "chargehub",
+     "name": "ChargeHub",
+     "owner": "Mogile Technologies Inc.",
+     "category": "Aggregator",
+     "notes": "Free app for the US and Canada that finds chargers, then starts and pays for sessions at 40+ partner networks from one wallet balance. ChargeHub charges a per-session activation fee, which its ChargeHub Plus membership waives. Networks ChargeHub lists but does not pay for (for example Tesla and EVgo) still need their own app or card.",
+     "status": {
+      "tesla": [
+       "NO",
+       "Listed by ChargeHub, but not among its in-app payment networks. Start in the Tesla app or your automaker's app."
+      ],
+      "ea": [
+       "NO",
+       "Listed by ChargeHub, but not among its in-app payment networks. Use the EA app or a card."
+      ],
+      "ionna": [
+       "APP",
+       "IONNA stations can be activated and paid for in ChargeHub (announced Jun 10, 2026). IONNA's own FAQ also lists ChargeHub among the apps that can start a remote session."
+      ],
+      "evgo": [
+       "NO",
+       "Listed by ChargeHub, but not among its in-app payment networks. Use the EVgo app."
+      ],
+      "chargepoint": [
+       "APP",
+       "ChargePoint is on ChargeHub's in-app payment list."
+      ],
+      "blink": [
+       "APP",
+       "Blink is on ChargeHub's in-app payment list."
+      ],
+      "flo": [
+       "APP",
+       "FLO is on ChargeHub's in-app payment list."
+      ],
+      "shell": [
+       "APP",
+       "Shell Recharge is on ChargeHub's in-app payment list."
+      ],
+      "evconnect": [
+       "APP",
+       "EV Connect stations can be activated and paid for in ChargeHub (since Jul 2025)."
+      ],
+      "francis": [
+       "NO",
+       "Not on ChargeHub's list of supported networks (absence-based, checked Nov 2026). Francis Energy app required."
+      ],
+      "bppulse": [
+       "APP",
+       "Live in the ChargeHub app since Aug 24, 2026: 840 DC fast chargers at 96 sites in 22 states, all over 100 kW and roughly a third with NACS. A NACS Daily report (Oct 30, 2026) says bp pulse also joined ChargeHub's Passport Hub roaming platform, with 850+ charge points at 95+ sites."
+      ],
+      "ran": [
+       "NO",
+       "Listed by ChargeHub, but not among its in-app payment networks. Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Listed by ChargeHub, but not among its in-app payment networks. Mercedes app or card reader required."
+      ],
+      "rede": [
+       "APP",
+       "RED E Charge is on ChargeHub's in-app payment list."
+      ],
+      "powerflex": [
+       "NO",
+       "Listed by ChargeHub, but not among its in-app payment networks. Separate app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not on ChargeHub's list of supported networks (absence-based, checked Nov 2026). Walmart sessions start in the Walmart app."
+      ]
+     }
+    },
+    {
+     "id": "cpo_chargepoint",
+     "name": "ChargePoint App",
+     "owner": "ChargePoint Inc.",
+     "category": "CPO",
+     "notes": "Native network + bilateral OCPI roaming partnerships with EVgo & FLO.",
+     "status": {
+      "tesla": [
+       "NO",
+       "Separate Tesla app or card reader."
+      ],
+      "ea": [
+       "NO",
+       "Electrify America app or card reader."
+      ],
+      "ionna": [
+       "APP",
+       "The ChargePoint app can start sessions at IONNA. ChargePoint RFID cards and Tap to Charge do not work there."
+      ],
+      "evgo": [
+       "ROAM",
+       "Direct OCPI roaming; activate EVgo with ChargePoint app or card."
+      ],
+      "chargepoint": [
+       "APP",
+       "Native network; tap NFC phone or RFID card."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "ROAM",
+       "Direct bilateral roaming; activate FLO with ChargePoint app."
+      ],
+      "shell": [
+       "ROAM",
+       "Direct OCPI roaming agreement."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "APP",
+       "Hardware and software partnership powered by ChargePoint."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "cpo_evgo",
+     "name": "EVgo App",
+     "owner": "EVgo Services LLC",
+     "category": "CPO",
+     "notes": "Native fast charging with Autocharge+ (MAC address) & ChargePoint roaming.",
+     "status": {
+      "tesla": [
+       "NO",
+       "Tesla app or kiosk reader required."
+      ],
+      "ea": [
+       "NO",
+       "Electrify America app or kiosk reader."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "PC",
+       "Native network with Autocharge+ instant plug-in billing."
+      ],
+      "chargepoint": [
+       "ROAM",
+       "Direct bilateral OCPI roaming on ChargePoint stations."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "ROAM",
+       "Direct bilateral OCPI roaming on FLO stations."
+      ],
+      "shell": [
+       "ROAM",
+       "Direct OCPI bilateral roaming on Shell stations."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "cpo_shell",
+     "name": "Shell Recharge App",
+     "owner": "Shell USA",
+     "category": "CPO",
+     "notes": "Shell Recharge: US roaming and billing platform (BMW billing runs through it). Most Volta sites were agreed to be sold to Jolt (closing expected Jan 2026).",
+     "status": {
+      "tesla": [
+       "NO",
+       "Tesla app or kiosk reader."
+      ],
+      "ea": [
+       "NO",
+       "EA app or kiosk reader."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "ROAM",
+       "Roaming partnership; activate EVgo with Shell app."
+      ],
+      "chargepoint": [
+       "ROAM",
+       "Roaming partnership; activate ChargePoint with Shell app."
+      ],
+      "blink": [
+       "ROAM",
+       "Bilateral roaming on Blink stations."
+      ],
+      "flo": [
+       "ROAM",
+       "Bilateral roaming on FLO stations."
+      ],
+      "shell": [
+       "APP",
+       "Native network & Shell Recharge RFID card."
+      ],
+      "evconnect": [
+       "ROAM",
+       "Roaming partner on select EV Connect sites."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "cpo_flo",
+     "name": "FLO App",
+     "owner": "Services FLO Inc.",
+     "category": "CPO",
+     "notes": "Canadian-American network with direct interoperability agreements.",
+     "status": {
+      "tesla": [
+       "NO",
+       "Tesla app or card reader."
+      ],
+      "ea": [
+       "NO",
+       "EA app or card reader."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "ROAM",
+       "Direct bilateral roaming on EVgo dispensers."
+      ],
+      "chargepoint": [
+       "ROAM",
+       "Direct bilateral roaming on ChargePoint dispensers."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "Native network & FLO RFID card."
+      ],
+      "shell": [
+       "ROAM",
+       "Direct bilateral roaming on Shell Recharge."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "cpo_blink",
+     "name": "Blink Charging App",
+     "owner": "Blink Charging Co.",
+     "category": "CPO",
+     "notes": "Blink Mobility & Blink Network with roaming agreements.",
+     "status": {
+      "tesla": [
+       "NO",
+       "Tesla app or kiosk reader."
+      ],
+      "ea": [
+       "NO",
+       "EA app or kiosk reader."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app required."
+      ],
+      "chargepoint": [
+       "NO",
+       "ChargePoint app required."
+      ],
+      "blink": [
+       "APP",
+       "Native network & Blink RFID card."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "ROAM",
+       "Roaming partnership on Shell Recharge."
+      ],
+      "evconnect": [
+       "ROAM",
+       "Select bilateral roaming with EV Connect."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes app or card reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     }
+    },
+    {
+     "id": "cpo_walmart",
+     "name": "Walmart App (EV Charging)",
+     "owner": "Walmart Inc.",
+     "category": "CPO",
+     "notes": "Start and pay for sessions in the Walmart app; Walmart+ members get discounted rates. 100 Walmart-owned sites in 20 states (Aug 2026).",
+     "status": {
+      "tesla": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "ea": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "ionna": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "evgo": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "chargepoint": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "blink": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "flo": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "shell": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "evconnect": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "francis": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "bppulse": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "ran": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "mercedes": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "rede": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "powerflex": [
+       "NO",
+       "Not supported in the Walmart app; it charges only at Walmart's own network."
+      ],
+      "walmart": [
+       "APP",
+       "Start and pay in the Walmart app. CCS and NACS connectors, up to 400 kW."
+      ]
+     }
+    }
+   ]
+  },
+  "brands": {
+   "title": "Car brands",
+   "heading": "Car brands and in-car / Plug & Charge network access",
+   "entity_label": "Car brand",
+   "entity_singular": "brand",
+   "entity_plural": "brands",
+   "categories": {
+    "American OEM": "American OEM",
+    "German Luxury": "German Luxury",
+    "Korean OEM": "Korean OEM",
+    "Korean Luxury": "Korean Luxury",
+    "German OEM": "German OEM",
+    "German Performance": "German Performance",
+    "Swedish Luxury": "Swedish Luxury",
+    "Swedish Performance": "Swedish Performance",
+    "American Luxury": "American Luxury",
+    "Japanese OEM": "Japanese OEM",
+    "Multinational OEM": "Multinational OEM"
+   },
+   "rows": [
+    {
+     "id": "brand_ford",
+     "name": "Ford",
+     "owner": "Ford Motor Co.",
+     "category": "American OEM",
+     "notes": "Native ISO 15118 certificates on Mach-E & Lightning; SYNC navigation preconditioning & stall release.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge and SYNC in-car / Ford app activation. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Native ISO 15118 Plug & Charge, SYNC in-car start, and Ford app remote start."
+      ],
+      "ionna": [
+       "PC",
+       "Plug & Charge, SYNC Public Charging app, or the Ford app. Ford joined via the BlueOval Charge Network in Mar 2025; it is not an IONNA founding member."
+      ],
+      "evgo": [
+       "BOTH",
+       "Initiate session via SYNC touchscreen or Ford app; billed to BlueOval account."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "Initiate session via SYNC touchscreen or Ford app across ChargePoint sites."
+      ],
+      "blink": [
+       "BOTH",
+       "Start the session from the SYNC screen or the Ford app and pay through your BlueOval account (Blink roaming)."
+      ],
+      "flo": [
+       "BOTH",
+       "Initiate session via SYNC touchscreen or Ford app."
+      ],
+      "shell": [
+       "BOTH",
+       "Initiate session via SYNC touchscreen or Ford app."
+      ],
+      "evconnect": [
+       "BOTH",
+       "Start the session from the SYNC screen or the Ford app."
+      ],
+      "francis": [
+       "BOTH",
+       "Initiate session via SYNC touchscreen or Ford app."
+      ],
+      "bppulse": [
+       "PC",
+       "bp pulse is a BlueOval Charge Network partner on Ford's own list (Apr 2026). Plug & Charge is live at bp pulse 150 kW chargers as of Aug 2026, and the 400 kW chargers had it earlier (Ford Authority, citing a Ford engineer). You can also start a session from the Ford app or the SYNC screen. Ford has not published which models or software versions get Plug & Charge."
+      ],
+      "ran": [
+       "NO",
+       "Rivian Adventure Network currently requires separate Rivian app."
+      ],
+      "mercedes": [
+       "BOTH",
+       "Start the session from the SYNC screen or the Ford app (integrated partner network)."
+      ],
+      "rede": [
+       "BOTH",
+       "Start the session from the SYNC screen or the Ford app."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex is not on Ford's BlueOval Charge Network partner list (Apr 2026)."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "SYNC 4A Touchscreen with Connected Navigation",
+     "oem_app": "Ford App / FordPass (BlueOval Charge Network)"
+    },
+    {
+     "id": "brand_gm",
+     "name": "General Motors (Chevy, GMC, Cadillac)",
+     "owner": "General Motors",
+     "category": "American OEM",
+     "notes": "Google built-in route planner with GM Energy Pass. Plug & Charge is live at IONNA, EVgo, Electrify America (native CCS ports; native NACS early 2027), and at Tesla Superchargers on NACS-native models.",
+     "status": {
+      "tesla": [
+       "BOTH",
+       "In-car Google Maps routing plus GM Energy Pass app start. Plug & Charge works on NACS-native GM EVs (others via a promised over-the-air update). CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge via GM Energy Pass is live for GM EVs with native CCS ports (native NACS-port GM EVs scheduled for early 2027); also in-car Google Maps and brand app."
+      ],
+      "ionna": [
+       "PC",
+       "Founding investor; ISO 15118 Plug & Charge, in-car Google built-in start, and GM app."
+      ],
+      "evgo": [
+       "PC",
+       "Native GM Plug & Charge (ISO 15118 / Autocharge integration), in-car screen start, and app."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "In-car touchscreen activation and myChevrolet app remote start."
+      ],
+      "blink": [
+       "APP",
+       "Initiate session via myChevrolet / GM Energy app."
+      ],
+      "flo": [
+       "BOTH",
+       "In-car screen activation and GM app start."
+      ],
+      "shell": [
+       "BOTH",
+       "In-car screen activation and GM app start."
+      ],
+      "evconnect": [
+       "APP",
+       "Initiate session via GM Energy app."
+      ],
+      "francis": [
+       "BOTH",
+       "In-car screen activation and GM app start."
+      ],
+      "bppulse": [
+       "APP",
+       "Initiate session via GM app."
+      ],
+      "ran": [
+       "NO",
+       "Separate Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Kiosk reader or Mercedes app required."
+      ],
+      "rede": [
+       "NO",
+       "Kiosk reader required."
+      ],
+      "powerflex": [
+       "APP",
+       "Select locations in GM app."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Google built-in (Android Automotive) Touchscreen",
+     "oem_app": "myChevrolet / myGMC / myCadillac (GM Energy)"
+    },
+    {
+     "id": "brand_rivian",
+     "name": "Rivian",
+     "owner": "Rivian Automotive",
+     "category": "American OEM",
+     "notes": "Full vehicle-level Plug & Charge stack; automatic battery conditioning and stall dispatch.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge and in-car display / Rivian app activation. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Native ISO 15118 Plug & Charge and in-car screen / app start."
+      ],
+      "ionna": [
+       "PC",
+       "Native ISO 15118 Plug & Charge, in-car display start, and Rivian app."
+      ],
+      "evgo": [
+       "BOTH",
+       "Rivian in-car center display initiation and Rivian app payment."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "Rivian in-car center display initiation and Rivian app payment."
+      ],
+      "blink": [
+       "NO",
+       "Blink app or card reader required."
+      ],
+      "flo": [
+       "APP",
+       "Initiate session via Rivian app."
+      ],
+      "shell": [
+       "APP",
+       "Initiate session via Rivian app."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "PC",
+       "Native Rivian Adventure Network Plug & Charge (instant plug-in)."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Rivian Central Display with Proprietary Software",
+     "oem_app": "Rivian Mobile App"
+    },
+    {
+     "id": "brand_tesla",
+     "name": "Tesla",
+     "owner": "Tesla, Inc.",
+     "category": "American OEM",
+     "notes": "Pioneer of seamless vehicle Plug & Charge. Native handshake and billing across all Superchargers.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Proprietary zero-touch Plug & Charge on all Superchargers; in-car routing."
+      ],
+      "ea": [
+       "NO",
+       "Electrify America app or card reader (using CCS adapter)."
+      ],
+      "ionna": [
+       "PC",
+       "Autocharge / Plug & Charge enabled for Tesla vehicles at IONNA (Nov 2026) via Presto setup (pre-2021 Teslas may need a CCS retrofit)."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app or Autocharge+ (using CCS adapter or native NACS stall)."
+      ],
+      "chargepoint": [
+       "NO",
+       "ChargePoint app or tap to pay."
+      ],
+      "blink": [
+       "NO",
+       "Blink app or card reader."
+      ],
+      "flo": [
+       "NO",
+       "FLO app or card reader."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Tesla Center Display & Integrated Trip Planner",
+     "oem_app": "Tesla Mobile App"
+    },
+    {
+     "id": "brand_mercedes",
+     "name": "Mercedes-Benz",
+     "owner": "Mercedes-Benz Group",
+     "category": "German Luxury",
+     "notes": "MBUX Electric Intelligence with automated ISO 15118 Plug & Charge at EA, EVgo, and Mercedes HPC.",
+     "status": {
+      "tesla": [
+       "BOTH",
+       "MBUX in-car charger selection and Mercedes me app start. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "ISO 15118 Plug & Charge, MBUX in-car screen start, and Mercedes me app."
+      ],
+      "ionna": [
+       "PC",
+       "Founding joint-venture partner; ISO 15118 Plug & Charge, MBUX start, and app."
+      ],
+      "evgo": [
+       "PC",
+       "ISO 15118 Plug & Charge, MBUX in-car screen start, and Mercedes me app."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "MBUX in-car screen start and Mercedes me app activation."
+      ],
+      "blink": [
+       "NO",
+       "Blink app or card reader."
+      ],
+      "flo": [
+       "APP",
+       "Mercedes me app roaming via ChargePoint."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "PC",
+       "Native Mercedes HPC Plug & Charge (ISO 15118), MBUX screen start, and app."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "MBUX Hyperscreen / Touchscreen with Electric Intelligence",
+     "oem_app": "Mercedes me connect / Mercedes me Charge"
+    },
+    {
+     "id": "brand_bmw",
+     "name": "BMW",
+     "owner": "BMW Group",
+     "category": "German Luxury",
+     "notes": "BMW Charging powered by Shell Recharge & ChargePoint. ISO 15118 Plug & Charge on i4, iX, i7, i5.",
+     "status": {
+      "tesla": [
+       "BOTH",
+       "iDrive in-car screen start and My BMW app activation. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "ISO 15118 Plug & Charge (multi-contract), iDrive screen start, and My BMW app."
+      ],
+      "ionna": [
+       "PC",
+       "Founding partner; ISO 15118 Plug & Charge, iDrive start, and My BMW app."
+      ],
+      "evgo": [
+       "BOTH",
+       "iDrive in-car activation and My BMW app start via Shell alliance."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "iDrive in-car activation and My BMW app start."
+      ],
+      "blink": [
+       "APP",
+       "My BMW app start via Shell roaming."
+      ],
+      "flo": [
+       "APP",
+       "My BMW app start via ChargePoint roaming."
+      ],
+      "shell": [
+       "BOTH",
+       "iDrive in-car activation and My BMW app start."
+      ],
+      "evconnect": [
+       "APP",
+       "My BMW app start."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "BMW Curved Display (iDrive 8.5 / 9) with eDrive",
+     "oem_app": "My BMW App (BMW Charging)"
+    },
+    {
+     "id": "brand_hyundai",
+     "name": "Hyundai",
+     "owner": "Hyundai Motor Group",
+     "category": "Korean OEM",
+     "notes": "E-GMP 800V fast charging platform (Ioniq 5, Ioniq 6). Transitioning to factory NACS ports.",
+     "status": {
+      "tesla": [
+       "BOTH",
+       "ccNC in-car navigation start and MyHyundai Bluelink app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "APP",
+       "MyHyundai app activation and complimentary charging promo code."
+      ],
+      "ionna": [
+       "PC",
+       "Founding investor; ISO 15118 Plug & Charge, in-car ccNC start, and Bluelink app."
+      ],
+      "evgo": [
+       "BOTH",
+       "In-car navigation start and Bluelink app roaming."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "In-car touchscreen start and MyHyundai app activation."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "Bluelink app roaming via ChargePoint."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Hyundai ccNC / Bluelink Navigation Display",
+     "oem_app": "MyHyundai with Bluelink"
+    },
+    {
+     "id": "brand_kia",
+     "name": "Kia",
+     "owner": "Hyundai Motor Group",
+     "category": "Korean OEM",
+     "notes": "E-GMP platform (EV6, EV9) with 800V fast charging and factory NACS adoption.",
+     "status": {
+      "tesla": [
+       "BOTH",
+       "ccNC in-car start and Kia Access app activation. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "APP",
+       "Kia Access app promo enrollment and session monitoring."
+      ],
+      "ionna": [
+       "PC",
+       "Founding investor; ISO 15118 Plug & Charge, ccNC start, and Kia Access."
+      ],
+      "evgo": [
+       "BOTH",
+       "In-car navigation start and Kia Access app roaming."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "In-car screen start and Kia Access Charge Pass."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "Kia Access app roaming via ChargePoint."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Kia ccNC Panoramic Dual Screens with Kia Connect",
+     "oem_app": "Kia Access"
+    },
+    {
+     "id": "brand_genesis",
+     "name": "Genesis",
+     "owner": "Hyundai Motor Group",
+     "category": "Korean Luxury",
+     "notes": "GV60, Electrified GV70, Electrified G80 on 800V E-GMP platform.",
+     "status": {
+      "tesla": [
+       "BOTH",
+       "In-car cockpit start and Genesis app activation. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "NO",
+       "Genesis lists Electrify America as \"coming soon\" for In-App Charging; use the Electrify America app."
+      ],
+      "ionna": [
+       "PC",
+       "Founding investor; ISO 15118 Plug & Charge, in-car start, and Genesis app."
+      ],
+      "evgo": [
+       "BOTH",
+       "In-car screen start and Genesis app roaming."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "In-car screen start and Genesis app Charge Pass."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "Genesis app roaming via ChargePoint."
+      ],
+      "shell": [
+       "APP",
+       "Shell stations are supported in Genesis In-App Charging."
+      ],
+      "evconnect": [
+       "APP",
+       "EV Connect stations are supported in Genesis In-App Charging."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Genesis OLED Integrated Cockpit (ccIC)",
+     "oem_app": "Genesis Intelligent Assistant"
+    },
+    {
+     "id": "brand_vw",
+     "name": "Volkswagen",
+     "owner": "Volkswagen Group",
+     "category": "German OEM",
+     "notes": "ID.4 and ID.Buzz feature native ISO 15118 Plug & Charge at Electrify America.",
+     "status": {
+      "tesla": [
+       "NO",
+       "Per InsideEVs (Mar 2026) VW Plug & Charge does not work at Superchargers; use the Tesla app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "ISO 15118 Plug & Charge (on ID. software 3.1+), in-car screen start, and myVW app."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app required."
+      ],
+      "chargepoint": [
+       "NO",
+       "ChargePoint app required."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "VW Discover Pro Infotainment with ID. Software 3.1+",
+     "oem_app": "myVW App"
+    },
+    {
+     "id": "brand_audi",
+     "name": "Audi",
+     "owner": "Volkswagen Group",
+     "category": "German Luxury",
+     "notes": "e-tron, Q4 e-tron, Q8 e-tron, e-tron GT with native ISO 15118 Plug & Charge.",
+     "status": {
+      "tesla": [
+       "APP",
+       "Initiate session via myAudi app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not). The Audi Q4 e-tron is not supported (TheChargePort, Oct 2026)."
+      ],
+      "ea": [
+       "PC",
+       "Native ISO 15118 Plug & Charge, Audi MMI in-car start, and myAudi app."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app required."
+      ],
+      "chargepoint": [
+       "NO",
+       "ChargePoint app required."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Audi MMI Touch Response with e-tron route planner",
+     "oem_app": "myAudi App"
+    },
+    {
+     "id": "brand_porsche",
+     "name": "Porsche",
+     "owner": "Porsche AG (VW Group)",
+     "category": "German Performance",
+     "notes": "Taycan and Macan EV with 800V fast charging and native ISO 15118 certificates.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge added in Jan 2026 (Macan Electric, 2026 Taycan, Cayenne Electric); My Porsche app start otherwise. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Native ISO 15118 Plug & Charge (up to 320 kW), PCM in-car start, and My Porsche app."
+      ],
+      "ionna": [
+       "PC",
+       "Plug & Charge and the My Porsche app are both supported at IONNA."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app required."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "PCM in-car start and My Porsche app on Porsche Destination sites."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Porsche Communication Management (PCM) with Charging Planner",
+     "oem_app": "My Porsche (Porsche Charging Service)"
+    },
+    {
+     "id": "brand_volvo",
+     "name": "Volvo Cars",
+     "owner": "Volvo Car Group",
+     "category": "Swedish Luxury",
+     "notes": "EX30, EX90, EX40 with Google built-in route optimization and ChargePoint integration. Plug & Charge on the EX90 now and the EX60 at its US launch (Tesla Superchargers and IONNA).",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge on the EX90 (live) and EX60 (at US launch) once activated. A 2025 EX90 needs the newer NVIDIA Orin computer; InsideEVs says Volvo fits it free at a service visit. Other models start from the Google built-in screen or the Volvo Cars app. EX90 (CCS1) needs an approved NACS adapter; EX60 has a native NACS port. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "BOTH",
+       "Google built-in in-car start and Volvo Cars app."
+      ],
+      "ionna": [
+       "PC",
+       "Plug & Charge on the EX90 (live) and EX60 (at US launch) once activated. A 2025 EX90 needs the newer NVIDIA Orin computer; InsideEVs says Volvo fits it free at a service visit. Volvo Cars app start on other models."
+      ],
+      "evgo": [
+       "BOTH",
+       "In-car screen start and Volvo Cars app roaming."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "Google built-in in-car start and Volvo Cars app integration."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "Volvo Cars app roaming via ChargePoint."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Google built-in (Android Automotive OS) Central Display",
+     "oem_app": "Volvo Cars App"
+    },
+    {
+     "id": "brand_polestar",
+     "name": "Polestar",
+     "owner": "Polestar Automotive",
+     "category": "Swedish Performance",
+     "notes": "Polestar 2, 3, 4 with Google Automotive system and ChargePoint roaming partner hub.",
+     "status": {
+      "tesla": [
+       "BOTH",
+       "Google in-car touchscreen start and Polestar app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "BOTH",
+       "In-car Google Maps start and Polestar app."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "BOTH",
+       "In-car Google Maps start and Polestar app roaming."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "Google in-car touchscreen start and Polestar Charge app."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "Polestar app roaming via ChargePoint."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Android Automotive OS with Google Assistant & Maps",
+     "oem_app": "Polestar App (Polestar Charge)"
+    },
+    {
+     "id": "brand_lucid",
+     "name": "Lucid",
+     "owner": "Lucid Motors",
+     "category": "American Luxury",
+     "notes": "Lucid Air (900V+ architecture) with native Electrify America ISO 15118 Plug & Charge.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge or the Lucid app. Gravity has a native NACS port; Air needs a Lucid-approved adapter or a Magic Dock stall. V3 or newer sites only."
+      ],
+      "ea": [
+       "PC",
+       "Native ISO 15118 Plug & Charge (up to 300 kW), Glass Cockpit start, and Lucid app."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "NO",
+       "EVgo app required."
+      ],
+      "chargepoint": [
+       "NO",
+       "ChargePoint app required."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Lucid Glass Cockpit with DreamDrive",
+     "oem_app": "Lucid Mobile App"
+    },
+    {
+     "id": "brand_nissan",
+     "name": "Nissan",
+     "owner": "Nissan Motor Co.",
+     "category": "Japanese OEM",
+     "notes": "MyNISSAN app and NissanConnect. The 2026 LEAF has a native NACS port and Plug & Charge at Electrify America; Ariya uses CCS; pre-2026 LEAFs (CHAdeMO) cannot use Superchargers.",
+     "status": {
+      "tesla": [
+       "APP",
+       "Initiate session via MyNISSAN app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "PC",
+       "Plug & Charge on the 2026 LEAF (set up once in MyNISSAN, announced Oct 2025); in-car and app start on other models."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "BOTH",
+       "NissanConnect in-car start and MyNISSAN EVgo integration."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "In-car touchscreen start and MyNISSAN app roaming."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "NO",
+       "FLO app required."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "NissanConnect Dual 12.3-inch Monolith Screens",
+     "oem_app": "MyNISSAN App"
+    },
+    {
+     "id": "brand_toyota",
+     "name": "Toyota",
+     "owner": "Toyota Motor Corp.",
+     "category": "Japanese OEM",
+     "notes": "Toyota app with Plug & Charge on 2026 BEVs (Superchargers and IONNA live); 2023–25 bZ4X needs a NACS adapter.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge on 2026 model-year BEVs after enrolling in the Toyota app; 2023–25 BEVs need a NACS adapter."
+      ],
+      "ea": [
+       "NO",
+       "Electrify America app required."
+      ],
+      "ionna": [
+       "PC",
+       "Founding investor partner; ISO 15118 Plug & Charge, in-car start, and Toyota App."
+      ],
+      "evgo": [
+       "BOTH",
+       "Toyota Audio Multimedia in-car start and Toyota App."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "In-car touchscreen start and Toyota App."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "Toyota App roaming via ChargePoint."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Toyota Audio Multimedia Touchscreen",
+     "oem_app": "Toyota App"
+    },
+    {
+     "id": "brand_subaru",
+     "name": "Subaru",
+     "owner": "Subaru Corporation",
+     "category": "Japanese OEM",
+     "notes": "Solterra co-developed with Toyota; EVgo credit bundle and ChargePoint integration.",
+     "status": {
+      "tesla": [
+       "APP",
+       "Initiate session via MySubaru app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "NO",
+       "Electrify America app required."
+      ],
+      "ionna": [
+       "NO",
+       "IONNA app required."
+      ],
+      "evgo": [
+       "BOTH",
+       "Solterra in-car touchscreen start and MySubaru app."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "In-car touchscreen start and MySubaru app roaming."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "MySubaru app roaming via ChargePoint."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "NO",
+       "EV Connect app required."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Subaru 12.3-inch Multimedia Display with Solterra Connect",
+     "oem_app": "MySubaru"
+    },
+    {
+     "id": "brand_honda",
+     "name": "Honda & Acura",
+     "owner": "American Honda Motor",
+     "category": "Japanese OEM",
+     "notes": "Prologue & ZDX built on GM Ultium platform with native EVgo Plug & Charge.",
+     "status": {
+      "tesla": [
+       "PC",
+       "Plug & Charge and in-car Google display / HondaLink app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "BOTH",
+       "In-car Google touchscreen start and HondaLink app."
+      ],
+      "ionna": [
+       "NO",
+       "Honda is a founding member, but Honda/Acura apps are not on IONNA's list of supported apps or Plug & Charge brands (Oct 2026). Pay with a card, Apple Pay, Google Pay or the IONNA app."
+      ],
+      "evgo": [
+       "PC",
+       "Ultium architecture native Plug & Charge, in-car screen start, and app."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "In-car touchscreen start and HondaLink roaming."
+      ],
+      "blink": [
+       "NO",
+       "Blink app required."
+      ],
+      "flo": [
+       "APP",
+       "HondaLink app roaming via ChargePoint."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "APP",
+       "Honda EV Pocket partner roaming."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Google built-in Touchscreen with EV Route Planner",
+     "oem_app": "HondaLink / Acura EV App"
+    },
+    {
+     "id": "brand_stellantis",
+     "name": "Stellantis (Jeep, Ram, Dodge, Chrysler)",
+     "owner": "Stellantis N.V.",
+     "category": "Multinational OEM",
+     "notes": "Wagoneer S, Jeep Recon, Dodge Charger Daytona, Ram REV with Free2move Charge ecosystem.",
+     "status": {
+      "tesla": [
+       "APP",
+       "Initiate session via Free2move Charge app. CCS1 cars need an approved NACS adapter; newer NACS-port models plug in directly. Only Tesla-approved V3/V4 Superchargers work for non-Tesla vehicles (older V2 and some Tesla-only sites do not)."
+      ],
+      "ea": [
+       "BOTH",
+       "Uconnect 5 in-car start and Free2move Charge app."
+      ],
+      "ionna": [
+       "BOTH",
+       "Founding member. In-car navigation routing to IONNA and Free2move Charge app start; Plug & Charge is not listed for Stellantis."
+      ],
+      "evgo": [
+       "BOTH",
+       "Uconnect 5 in-car start and Free2move Charge roaming."
+      ],
+      "chargepoint": [
+       "BOTH",
+       "Uconnect 5 in-car start and Free2move Charge partner network."
+      ],
+      "blink": [
+       "APP",
+       "Free2move Charge app roaming."
+      ],
+      "flo": [
+       "APP",
+       "Free2move Charge app roaming."
+      ],
+      "shell": [
+       "NO",
+       "Shell Recharge app required."
+      ],
+      "evconnect": [
+       "APP",
+       "Free2move Charge app roaming."
+      ],
+      "francis": [
+       "NO",
+       "Francis Energy app required."
+      ],
+      "bppulse": [
+       "NO",
+       "BP pulse app required."
+      ],
+      "ran": [
+       "NO",
+       "Rivian app required."
+      ],
+      "mercedes": [
+       "NO",
+       "Mercedes kiosk reader."
+      ],
+      "rede": [
+       "NO",
+       "Red E kiosk reader."
+      ],
+      "powerflex": [
+       "NO",
+       "PowerFlex app required."
+      ],
+      "walmart": [
+       "NO",
+       "Not integrated. Walmart sessions start in the Walmart app; no automaker or roaming integration has been announced (Oct 2026)."
+      ]
+     },
+     "system": "Uconnect 5 Touchscreen with EV Pages",
+     "oem_app": "Free2move Charge / Brand Apps"
+    }
+   ]
+  }
+ }
+}

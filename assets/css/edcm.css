@@ -1,0 +1,1770 @@
+/*
+ * Electric Duo EV Charging Matrix
+ * Dark theme matched to TheElectricDuo.com (bg #060F16, accent #00B1E2).
+ *
+ * Layout strategy
+ *  - Wide screens: compact icon grid, vertical network headers, sticky header row
+ *    and first column inside an internal scroller. 16 networks fit in ~960px.
+ *  - Narrow containers (<= 760px, measured on the plugin box, not the window):
+ *    every row becomes a card that lists only the networks it supports.
+ *  - Selectors are prefixed with .edcm so theme styles (e.g. Divi's
+ *    ".entry-content table td") do not leak in.
+ */
+
+.edcm,
+.edcm *,
+.edcm *::before,
+.edcm *::after {
+	box-sizing: border-box;
+}
+
+.edcm {
+	--edcm-bg: #060f16;
+	--edcm-surface: #0b1a23;
+	--edcm-surface-2: #0e212c;
+	--edcm-text: #d6e7ef;
+	--edcm-muted: #93adbb;
+	--edcm-accent: #00b1e2;
+	--edcm-accent-ink: #03141c;
+	--edcm-line: rgba(0, 177, 226, 0.2);
+	--edcm-line-soft: rgba(0, 177, 226, 0.1);
+	--edcm-line-strong: rgba(0, 177, 226, 0.5);
+	--edcm-hover: rgba(0, 177, 226, 0.08);
+	--edcm-radius: 14px;
+	--edcm-first: clamp(176px, 25cqw, 264px);
+	--edcm-colmin: 40px;
+	--edcm-cols: 16;
+	--edcm-font-heading: var(--et_global_heading_font, "Oswald"), "Oswald", "Arial Narrow", Impact, sans-serif;
+	--edcm-font-body: var(--et_global_body_font, "Inter"), "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+	--edcm-font-btn: "Poppins", var(--et_global_body_font, "Inter"), -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+	display: block;
+	position: relative;
+	margin: 1.5em 0;
+	padding: clamp(14px, 2.4vw, 28px);
+	background: var(--edcm-bg);
+	color: var(--edcm-text);
+	font-family: var(--edcm-font-body);
+	font-size: 16px;
+	line-height: 1.55;
+	border: 1px solid var(--edcm-line);
+	border-radius: 20px;
+	color-scheme: dark;
+	-webkit-text-size-adjust: 100%;
+}
+
+/* The measured box for container queries. Containment is deliberately NOT on
+   the outer .edcm: its full-screen mode uses position:fixed. */
+.edcm .edcm__inner {
+	container-type: inline-size;
+	container-name: edcm;
+	width: 100%;
+	min-width: 0;
+}
+
+.edcm [hidden] {
+	display: none !important;
+}
+
+.edcm .edcm-sr,
+.edcm .edcm__lbl {
+	position: absolute !important;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* Controls that only work with JavaScript stay hidden without it. */
+.edcm:not(.edcm--js) .edcm-js-only {
+	display: none !important;
+}
+
+.edcm h2,
+.edcm h3,
+.edcm h4,
+.edcm h5,
+.edcm h6 {
+	padding-bottom: 0;
+}
+
+.edcm .edcm__inner p,
+.edcm .edcm__dialog p {
+	padding: 0;
+}
+
+.edcm a {
+	color: var(--edcm-accent);
+	text-decoration: underline;
+	text-underline-offset: 2px;
+	text-decoration-thickness: 1px;
+}
+
+.edcm a:hover {
+	text-decoration-thickness: 2px;
+}
+
+.edcm button,
+.edcm input,
+.edcm select,
+.edcm summary {
+	font-family: inherit;
+}
+
+.edcm :focus-visible {
+	outline: 2px solid var(--edcm-accent);
+	outline-offset: 2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Header                                                              */
+/* ------------------------------------------------------------------ */
+
+.edcm .edcm__title {
+	margin: 0 0 10px;
+	padding: 0;
+	font-family: var(--edcm-font-heading);
+	font-weight: 700;
+	font-size: clamp(23px, 4.4cqw, 40px);
+	line-height: 1.12;
+	letter-spacing: 0.015em;
+	text-transform: uppercase;
+	color: var(--edcm-accent);
+}
+
+.edcm .edcm__title::after {
+	content: "";
+	display: block;
+	width: 56px;
+	height: 3px;
+	margin-top: 12px;
+	border-radius: 3px;
+	background: var(--edcm-accent);
+}
+
+.edcm .edcm__intro {
+	margin: 0 0 8px;
+	max-width: 70ch;
+	color: var(--edcm-text);
+}
+
+.edcm .edcm__meta {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 10px;
+	margin: 0 0 4px;
+	font-size: 13px;
+	color: var(--edcm-muted);
+}
+
+.edcm .edcm__meta time {
+	color: var(--edcm-text);
+}
+
+/* ------------------------------------------------------------------ */
+/* Tabs                                                                */
+/* ------------------------------------------------------------------ */
+
+.edcm .edcm__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 20px 0 16px;
+}
+
+.edcm .edcm__tab {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 44px;
+	padding: 8px 18px;
+	font: 600 14px/1.2 var(--edcm-font-btn);
+	color: var(--edcm-accent);
+	background: transparent;
+	border: 1.5px solid var(--edcm-line-strong);
+	border-radius: 12px;
+	cursor: pointer;
+	transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.edcm .edcm__tab:hover {
+	background: var(--edcm-hover);
+	border-color: var(--edcm-accent);
+}
+
+.edcm .edcm__tab[aria-selected="true"] {
+	background: var(--edcm-accent);
+	border-color: var(--edcm-accent);
+	color: var(--edcm-accent-ink);
+}
+
+.edcm .edcm__tabcount {
+	display: inline-block;
+	min-width: 22px;
+	padding: 1px 7px;
+	font-size: 12px;
+	font-weight: 600;
+	text-align: center;
+	border-radius: 999px;
+	background: rgba(0, 177, 226, 0.16);
+}
+
+.edcm .edcm__tab[aria-selected="true"] .edcm__tabcount {
+	background: rgba(3, 20, 28, 0.18);
+}
+
+/* ------------------------------------------------------------------ */
+/* Legend                                                              */
+/* ------------------------------------------------------------------ */
+
+.edcm .edcm__legend {
+	margin: 0 0 16px;
+	padding: 12px 14px;
+	background: var(--edcm-surface);
+	border: 1px solid var(--edcm-line-soft);
+	border-radius: var(--edcm-radius);
+}
+
+.edcm .edcm__legendlist {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.edcm .edcm__legendlist li {
+	margin: 0;
+	padding: 0;
+}
+
+.edcm .edcm__legenddetails {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+.edcm .edcm__legenddetails summary {
+	display: inline-block;
+	cursor: pointer;
+	color: var(--edcm-accent);
+	font-weight: 600;
+}
+
+.edcm .edcm__legenddetails dl {
+	display: grid;
+	grid-template-columns: max-content 1fr;
+	gap: 6px 14px;
+	margin: 10px 0 0;
+}
+
+.edcm .edcm__legenddetails dt {
+	font-weight: 600;
+	color: var(--edcm-accent);
+}
+
+.edcm .edcm__legenddetails dd {
+	margin: 0;
+	color: var(--edcm-text);
+}
+
+.edcm .edcm__inner .edcm__note {
+	margin: 12px 0 0;
+	padding: 10px 12px;
+	font-size: 13px;
+	background: rgba(255, 194, 77, 0.08);
+	border-left: 3px solid #ffc24d;
+	border-radius: 0 8px 8px 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Status pills / icons                                                */
+/* ------------------------------------------------------------------ */
+
+.edcm .edcm-i {
+	display: block;
+	flex: none;
+	width: 18px;
+	height: 18px;
+}
+
+.edcm .edcm__pill {
+	--c-fg: var(--edcm-accent);
+	--c-bg: rgba(0, 177, 226, 0.14);
+	--c-bd: rgba(0, 177, 226, 0.5);
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	min-width: 30px;
+	height: 30px;
+	padding: 0 5px;
+	font: 600 12px/1 var(--edcm-font-btn);
+	color: var(--c-fg);
+	background: var(--c-bg);
+	border: 1px solid var(--c-bd);
+	border-radius: 9px;
+	white-space: nowrap;
+}
+
+.edcm .edcm__pill[data-code="BOTH"] {
+	--c-fg: #3ddc97;
+	--c-bg: rgba(61, 220, 151, 0.13);
+	--c-bd: rgba(61, 220, 151, 0.5);
+}
+
+.edcm .edcm__pill[data-code="APP"] {
+	--c-fg: #8ea2ff;
+	--c-bg: rgba(142, 162, 255, 0.13);
+	--c-bd: rgba(142, 162, 255, 0.5);
+}
+
+.edcm .edcm__pill[data-code="ROAM"] {
+	--c-fg: #ffc24d;
+	--c-bg: rgba(255, 194, 77, 0.12);
+	--c-bd: rgba(255, 194, 77, 0.5);
+}
+
+.edcm .edcm__pill[data-code="NO"] {
+	--c-fg: #7f97a6;
+	--c-bg: rgba(127, 151, 166, 0.07);
+	--c-bd: rgba(127, 151, 166, 0.25);
+}
+
+.edcm .edcm__pill--label {
+	height: 32px;
+	padding: 0 12px 0 8px;
+}
+
+.edcm .edcm__pill--label .edcm__lbl {
+	position: static !important;
+	width: auto;
+	height: auto;
+	margin: 0;
+	overflow: visible;
+	clip: auto;
+	clip-path: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* Panels and toolbar                                                  */
+/* ------------------------------------------------------------------ */
+
+.edcm .edcm__h {
+	margin: 0 0 12px;
+	padding: 0;
+	font-family: var(--edcm-font-heading);
+	font-weight: 700;
+	font-size: clamp(19px, 2.6cqw, 24px);
+	line-height: 1.2;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--edcm-accent);
+}
+
+.edcm .edcm__toolbar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 10px;
+	margin: 0 0 10px;
+}
+
+.edcm .edcm__field {
+	position: relative;
+	display: block;
+	flex: 0 1 250px;
+	min-width: 0;
+	margin: 0;
+}
+
+.edcm .edcm__field--search {
+	flex: 1 1 240px;
+}
+
+.edcm .edcm__fieldicon {
+	position: absolute;
+	top: 50%;
+	left: 12px;
+	width: 18px;
+	height: 18px;
+	margin-top: -9px;
+	color: var(--edcm-muted);
+	pointer-events: none;
+}
+
+.edcm .edcm__inner .edcm__field input,
+.edcm .edcm__inner .edcm__field select {
+	display: block;
+	width: 100%;
+	height: 44px;
+	margin: 0;
+	padding: 0 12px;
+	font-size: 16px; /* 16px stops iOS zooming into the field */
+	line-height: 1.2;
+	color: var(--edcm-text);
+	background-color: var(--edcm-surface);
+	border: 1px solid var(--edcm-line);
+	border-radius: 10px;
+	box-shadow: none;
+}
+
+.edcm .edcm__inner .edcm__field input {
+	padding-left: 40px;
+}
+
+.edcm .edcm__inner .edcm__field select {
+	padding-right: 34px;
+	text-overflow: ellipsis;
+	-webkit-appearance: none;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%2300B1E2' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+}
+
+.edcm .edcm__inner .edcm__field input::placeholder {
+	color: var(--edcm-muted);
+	opacity: 1;
+}
+
+.edcm .edcm__inner .edcm__field input:hover,
+.edcm .edcm__inner .edcm__field select:hover {
+	border-color: var(--edcm-line-strong);
+}
+
+.edcm .edcm__inner .edcm__field input:focus,
+.edcm .edcm__inner .edcm__field select:focus {
+	border-color: var(--edcm-accent);
+	outline: 2px solid rgba(0, 177, 226, 0.35);
+	outline-offset: 0;
+}
+
+.edcm .edcm__btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	height: 44px;
+	margin: 0;
+	padding: 0 14px;
+	font: 600 13px/1 var(--edcm-font-btn);
+	color: var(--edcm-accent);
+	background: transparent;
+	border: 1.5px solid var(--edcm-line-strong);
+	border-radius: 10px;
+	cursor: pointer;
+	list-style: none;
+	white-space: nowrap;
+	transition: background-color 0.15s, border-color 0.15s;
+}
+
+.edcm .edcm__btn::-webkit-details-marker {
+	display: none;
+}
+
+.edcm .edcm__btn::marker {
+	content: "";
+}
+
+.edcm .edcm__btn:hover,
+.edcm .edcm__cols[open] > summary {
+	background: var(--edcm-hover);
+	border-color: var(--edcm-accent);
+}
+
+.edcm .edcm__btn .edcm-i {
+	width: 18px;
+	height: 18px;
+}
+
+.edcm .edcm__actions {
+	display: flex;
+	gap: 10px;
+	margin-left: auto;
+}
+
+.edcm .edcm__colcount {
+	padding: 1px 7px;
+	font-size: 11px;
+	border-radius: 999px;
+	background: rgba(0, 177, 226, 0.16);
+}
+
+.edcm .edcm__cols {
+	position: relative;
+}
+
+.edcm .edcm__colpop {
+	position: absolute;
+	z-index: 30;
+	top: calc(100% + 6px);
+	left: 0;
+	width: 260px;
+	max-width: calc(100vw - 48px);
+	max-height: 360px;
+	overflow: auto;
+	padding: 10px 12px;
+	background: var(--edcm-surface-2);
+	border: 1px solid var(--edcm-line-strong);
+	border-radius: 12px;
+	box-shadow: 0 18px 44px rgba(0, 0, 0, 0.55);
+}
+
+.edcm .edcm__colactions {
+	display: flex;
+	gap: 14px;
+	margin: 0 0 8px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--edcm-line-soft);
+}
+
+.edcm .edcm__link {
+	padding: 4px 0;
+	font: 600 13px/1 var(--edcm-font-btn);
+	color: var(--edcm-accent);
+	background: none;
+	border: 0;
+	cursor: pointer;
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.edcm .edcm__collist {
+	display: grid;
+	gap: 2px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.edcm .edcm__collist li {
+	margin: 0;
+	padding: 0;
+}
+
+.edcm .edcm__collist label,
+.edcm .edcm__check {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 34px;
+	margin: 0;
+	font-size: 14px;
+	color: var(--edcm-text);
+	cursor: pointer;
+}
+
+.edcm input[type="checkbox"] {
+	flex: none;
+	width: 18px;
+	height: 18px;
+	margin: 0;
+	accent-color: #00b1e2;
+}
+
+.edcm .edcm__check {
+	min-height: 44px;
+}
+
+.edcm .edcm__mobile-only {
+	display: none !important;
+}
+
+.edcm .edcm__statusrow {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	min-height: 36px;
+	margin: 0 0 8px;
+}
+
+.edcm .edcm__count {
+	margin: 0;
+	font-size: 13px;
+	color: var(--edcm-muted);
+}
+
+.edcm .edcm__scrollbtns {
+	display: flex;
+	gap: 6px;
+}
+
+.edcm .edcm__iconbtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 36px;
+	height: 36px;
+	padding: 0;
+	color: var(--edcm-accent);
+	background: transparent;
+	border: 1.5px solid var(--edcm-line-strong);
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.edcm .edcm__iconbtn:hover:not(:disabled) {
+	background: var(--edcm-hover);
+	border-color: var(--edcm-accent);
+}
+
+.edcm .edcm__iconbtn:disabled {
+	opacity: 0.35;
+	cursor: default;
+}
+
+.edcm .edcm__iconbtn .edcm-i {
+	width: 18px;
+	height: 18px;
+}
+
+.edcm .edcm__inner .edcm__empty {
+	margin: 12px 0 0;
+	padding: 28px 16px;
+	text-align: center;
+	color: var(--edcm-muted);
+	background: var(--edcm-surface);
+	border: 1px dashed var(--edcm-line);
+	border-radius: var(--edcm-radius);
+}
+
+/* ------------------------------------------------------------------ */
+/* Table (wide layout)                                                 */
+/* ------------------------------------------------------------------ */
+
+.edcm .edcm__scroller {
+	position: relative;
+	overflow: auto;
+	background-color: var(--edcm-surface);
+	border: 1px solid var(--edcm-line);
+	border-radius: var(--edcm-radius);
+	scrollbar-color: rgba(0, 177, 226, 0.55) transparent;
+	scrollbar-width: thin;
+	scroll-padding-left: var(--edcm-first);
+	scroll-padding-top: 170px;
+	/* Soft edge hints that appear only when there is more to scroll. */
+	background-image:
+		linear-gradient(to right, var(--edcm-surface) 30%, rgba(11, 26, 35, 0)),
+		linear-gradient(to left, var(--edcm-surface) 30%, rgba(11, 26, 35, 0)),
+		radial-gradient(farthest-side at 0 50%, rgba(0, 177, 226, 0.28), rgba(0, 177, 226, 0)),
+		radial-gradient(farthest-side at 100% 50%, rgba(0, 177, 226, 0.28), rgba(0, 177, 226, 0));
+	background-position: left center, right center, left center, right center;
+	background-repeat: no-repeat;
+	background-size: 36px 100%, 36px 100%, 14px 100%, 14px 100%;
+	background-attachment: local, local, scroll, scroll;
+}
+
+.edcm .edcm__scroller:focus-visible {
+	outline-offset: 0;
+}
+
+/* Fixed-height mode (height="N" or the Fixed table height setting): the table
+   scrolls inside a box and its header sticks inside that box. */
+.edcm.edcm--box .edcm__scroller {
+	max-height: var(--edcm-maxh, 720px);
+	max-height: min(var(--edcm-maxh, 720px), calc(100vh - 140px));
+	max-height: min(var(--edcm-maxh, 720px), calc(100dvh - 140px));
+}
+
+/* Default mode: the table grows with the page. A copy of the header row,
+   built by edcm.js, pins itself to the top of the screen (below any fixed site
+   menu) while the real header scrolls away. It is invisible at rest, so the
+   real header keeps its focus rings. */
+.edcm .edcm__pin {
+	display: none;
+}
+
+.edcm.edcm--js:not(.edcm--box):not(.is-fs) .edcm__pin {
+	display: block;
+	position: sticky;
+	top: var(--edcm-top, 0px);
+	z-index: 20;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	visibility: hidden;
+	pointer-events: none;
+	background-color: var(--edcm-surface-2);
+	border: 1px solid var(--edcm-line);
+	border-bottom: 0;
+	border-radius: var(--edcm-radius) var(--edcm-radius) 0 0;
+}
+
+.edcm.edcm--js:not(.edcm--box):not(.is-fs) .edcm__pin.is-on {
+	visibility: visible;
+	pointer-events: auto;
+	box-shadow: 0 12px 16px -12px rgba(0, 0, 0, 0.75);
+}
+
+/* Fallback when a theme wrapper stops position:sticky from working. */
+.edcm.edcm--js:not(.edcm--box):not(.is-fs) .edcm__pin.is-fixed {
+	position: fixed;
+}
+
+.edcm .edcm__inner .edcm__pin .edcm__table {
+	min-width: 0;
+	table-layout: fixed;
+}
+
+/* Keyboard focus and #hash jumps should not land under the pinned header or a fixed site menu. */
+.edcm {
+	scroll-margin-top: calc(var(--edcm-top, 0px) + 12px);
+}
+
+.edcm .edcm__rowbtn,
+.edcm .edcm__cellbtn {
+	scroll-margin-top: calc(var(--edcm-top, 0px) + var(--edcm-pinh, 0px) + 12px);
+}
+
+.edcm .edcm__netbtn {
+	scroll-margin-top: calc(var(--edcm-top, 0px) + 12px);
+}
+
+.edcm .edcm__inner .edcm__table {
+	width: 100%;
+	min-width: calc(var(--edcm-first) + var(--edcm-cols) * var(--edcm-colmin));
+	margin: 0;
+	padding: 0;
+	table-layout: fixed;
+	border-collapse: separate;
+	border-spacing: 0;
+	border: 0;
+	background: transparent;
+	font-size: 14px;
+	text-align: left;
+}
+
+.edcm .edcm__inner .edcm__table th,
+.edcm .edcm__inner .edcm__table td {
+	margin: 0;
+	border: 0;
+	background-clip: padding-box;
+	vertical-align: middle;
+}
+
+/* Header row */
+.edcm .edcm__inner .edcm__table thead th {
+	position: sticky;
+	top: 0;
+	z-index: 3;
+	padding: 0;
+	background-color: var(--edcm-surface-2);
+	border-bottom: 1px solid var(--edcm-line-strong);
+}
+
+.edcm .edcm__inner .edcm__table thead th.edcm__corner {
+	left: 0;
+	z-index: 5;
+	width: var(--edcm-first);
+	padding: 0 12px 12px;
+	vertical-align: bottom;
+	font-family: var(--edcm-font-heading);
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--edcm-muted);
+	border-right: 1px solid var(--edcm-line);
+}
+
+.edcm .edcm__inner .edcm__table thead th.edcm__nethead {
+	vertical-align: bottom;
+	text-align: center;
+}
+
+.edcm .edcm__netbtn {
+	display: block;
+	width: 100%;
+	/* Vertical text: height is the text length. max-content is required; "auto"
+	   would stretch to the viewport height in an orthogonal writing mode. */
+	height: max-content;
+	min-height: 96px;
+	margin: 0;
+	padding: 10px 0;
+	text-align: start;
+	font-family: var(--edcm-font-heading);
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.07em;
+	line-height: 1;
+	text-transform: uppercase;
+	white-space: nowrap;
+	color: var(--edcm-accent);
+	background: transparent;
+	border: 0;
+	border-radius: 0;
+	cursor: pointer;
+	writing-mode: vertical-rl;
+	transform: rotate(180deg);
+	transition: background-color 0.15s;
+}
+
+.edcm .edcm__netbtn:hover,
+.edcm .edcm__netbtn:focus-visible {
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.edcm .edcm__inner .edcm__table thead th.edcm__nethead:hover {
+	background-image: linear-gradient(var(--edcm-hover), var(--edcm-hover));
+}
+
+.edcm .edcm__netname {
+	display: inline-block;
+}
+
+/* Row header (first column) */
+.edcm .edcm__inner .edcm__table th.edcm__rowhead {
+	position: sticky;
+	left: 0;
+	z-index: 2;
+	width: var(--edcm-first);
+	padding: 7px 50px 7px 12px;
+	font-weight: 400;
+	background-color: var(--edcm-surface);
+	border-top: 1px solid var(--edcm-line-soft);
+	border-right: 1px solid var(--edcm-line);
+}
+
+.edcm .edcm__inner .edcm__table tbody tr:first-child th.edcm__rowhead,
+.edcm .edcm__inner .edcm__table tbody tr:first-child td {
+	border-top: 0;
+}
+
+.edcm .edcm__rowbtn {
+	display: block;
+	width: 100%;
+	margin: 0;
+	padding: 2px 0;
+	font: inherit;
+	text-align: left;
+	color: inherit;
+	background: none;
+	border: 0;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.edcm .edcm__name {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.25;
+	color: var(--edcm-accent);
+}
+
+.edcm .edcm__rowbtn:hover .edcm__name {
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.edcm .edcm__owner {
+	display: block;
+	overflow: hidden;
+	margin-top: 2px;
+	font-size: 12px;
+	line-height: 1.3;
+	color: var(--edcm-muted);
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.edcm .edcm__badge {
+	position: absolute;
+	top: 50%;
+	right: 8px;
+	padding: 2px 7px;
+	font-size: 11px;
+	font-weight: 500;
+	line-height: 1.4;
+	color: var(--edcm-muted);
+	border: 1px solid var(--edcm-line);
+	border-radius: 999px;
+	transform: translateY(-50%);
+	white-space: nowrap;
+}
+
+.edcm .edcm__badge b {
+	font-weight: 700;
+	color: var(--edcm-accent);
+}
+
+/* Wide layout shows the long text only in the detail dialog. */
+.edcm .edcm__sys,
+.edcm .edcm__notes,
+.edcm .edcm__netlabel,
+.edcm .edcm__detail {
+	display: none;
+}
+
+/* Cells */
+.edcm .edcm__inner .edcm__table td.edcm__cell {
+	height: 46px;
+	padding: 4px 0;
+	text-align: center;
+	border-top: 1px solid var(--edcm-line-soft);
+}
+
+.edcm .edcm__cellbtn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0;
+	padding: 2px;
+	color: inherit;
+	background: none;
+	border: 0;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.edcm .edcm__cellbtn:hover .edcm__pill,
+.edcm .edcm__cellbtn:focus-visible .edcm__pill {
+	border-color: var(--c-fg);
+	box-shadow: 0 0 0 2px var(--c-bg);
+}
+
+/* Row hover highlight (tint is layered so sticky cells stay opaque). */
+.edcm .edcm__inner .edcm__table tbody tr.edcm__row:hover > td,
+.edcm .edcm__inner .edcm__table tbody tr.edcm__row:hover > th {
+	background-image: linear-gradient(var(--edcm-hover), var(--edcm-hover));
+}
+
+/* ------------------------------------------------------------------ */
+/* Theme-proofing                                                      */
+/*                                                                     */
+/* Many themes style every table, th and td inside post content with   */
+/* !important rules and an #id in the selector (for example           */
+/* "#main-content table th { padding: 14px 16px !important }"). Those  */
+/* beat any plain class selector, even an !important one, so the table */
+/* grows margins, extra padding and borders and the pinned header gets */
+/* clipped. :is(#edcm-x, .edcm) takes the weight of an ID selector     */
+/* without needing that ID on the page, and the declarations below     */
+/* restate the intended values with !important. Keep them in step with */
+/* the table rules above, and with the card layout further down.       */
+/* ------------------------------------------------------------------ */
+
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table {
+	margin: 0 !important;
+	overflow: visible !important;
+	background-color: transparent !important;
+	border: 0 !important;
+	border-radius: 0 !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table th,
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table td {
+	font-family: inherit !important;
+	font-size: inherit !important;
+	font-weight: 400 !important;
+	line-height: inherit !important;
+	letter-spacing: normal !important;
+	text-transform: none !important;
+	color: var(--edcm-text) !important;
+	border: 0 !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table thead th {
+	padding: 0 !important;
+	font-weight: 700 !important;
+	text-align: center !important;
+	background-color: var(--edcm-surface-2) !important;
+	border-bottom: 1px solid var(--edcm-line-strong) !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table thead th.edcm__corner {
+	padding: 0 12px 12px !important;
+	font-family: var(--edcm-font-heading) !important;
+	font-size: 13px !important;
+	letter-spacing: 0.06em !important;
+	text-transform: uppercase !important;
+	text-align: left !important;
+	color: var(--edcm-muted) !important;
+	border-right: 1px solid var(--edcm-line) !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table th.edcm__rowhead {
+	padding: 7px 50px 7px 12px !important;
+	text-align: left !important;
+	background-color: var(--edcm-surface) !important;
+	border-top: 1px solid var(--edcm-line-soft) !important;
+	border-right: 1px solid var(--edcm-line) !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table td.edcm__cell {
+	padding: 4px 0 !important;
+	text-align: center !important;
+	border-top: 1px solid var(--edcm-line-soft) !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table tbody tr:first-child th.edcm__rowhead,
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table tbody tr:first-child td {
+	border-top: 0 !important;
+}
+
+/* Zebra striping that themes add to every table. */
+:is(#edcm-x, .edcm) .edcm__inner .edcm__table tbody tr.edcm__row {
+	background-color: transparent !important;
+}
+
+/* Other things themes force inside post content. */
+:is(#edcm-x, .edcm) a[href] {
+	text-decoration-line: underline !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__dlgsub,
+:is(#edcm-x, .edcm) .edcm__dgroup,
+:is(#edcm-x, .edcm) .edcm__dtext,
+:is(#edcm-x, .edcm) .edcm__meta,
+:is(#edcm-x, .edcm) .edcm__count,
+:is(#edcm-x, .edcm) .edcm__empty,
+:is(#edcm-x, .edcm) .edcm__nettype,
+:is(#edcm-x, .edcm) .edcm__netsrc,
+:is(#edcm-x, .edcm) .edcm__netsrc li,
+:is(#edcm-x, .edcm) .edcm__disclaimer {
+	color: var(--edcm-muted) !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__dgroup {
+	font-family: inherit !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__meta time {
+	color: var(--edcm-text) !important;
+}
+
+:is(#edcm-x, .edcm) .edcm__badge b {
+	font-weight: 700 !important;
+	color: var(--edcm-accent) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* About / FAQ / footer                                                */
+/* ------------------------------------------------------------------ */
+
+.edcm .edcm__about,
+.edcm .edcm__faq {
+	margin-top: 32px;
+}
+
+.edcm .edcm__aboutdetails > summary,
+.edcm .edcm__faqitem > summary {
+	cursor: pointer;
+	font-weight: 600;
+	list-style: none;
+}
+
+.edcm .edcm__aboutdetails > summary::-webkit-details-marker,
+.edcm .edcm__faqitem > summary::-webkit-details-marker {
+	display: none;
+}
+
+.edcm .edcm__aboutdetails > summary {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	min-height: 44px;
+	padding: 0 16px;
+	font: 600 13px/1 var(--edcm-font-btn);
+	color: var(--edcm-accent);
+	border: 1.5px solid var(--edcm-line-strong);
+	border-radius: 10px;
+}
+
+.edcm .edcm__aboutdetails > summary:hover {
+	background: var(--edcm-hover);
+}
+
+.edcm .edcm__netgrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr));
+	gap: 12px;
+	margin-top: 16px;
+}
+
+.edcm .edcm__netinfo {
+	padding: 14px 16px;
+	background: var(--edcm-surface);
+	border: 1px solid var(--edcm-line-soft);
+	border-radius: var(--edcm-radius);
+}
+
+.edcm .edcm__neth {
+	margin: 0 0 2px;
+	padding: 0;
+	font-family: var(--edcm-font-heading);
+	font-size: 17px;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	line-height: 1.25;
+	text-transform: uppercase;
+	color: var(--edcm-accent);
+}
+
+.edcm .edcm__nettype {
+	margin: 0 0 8px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--edcm-muted);
+}
+
+.edcm .edcm__netabout {
+	margin: 0 0 8px;
+	font-size: 14px;
+}
+
+.edcm .edcm__netlink {
+	margin: 0 0 6px;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.edcm .edcm__netsrc {
+	margin: 0;
+	padding: 0 0 0 18px;
+	font-size: 12px;
+	color: var(--edcm-muted);
+}
+
+.edcm .edcm__netsrc li {
+	margin: 2px 0;
+}
+
+.edcm .edcm__faqitem {
+	border-bottom: 1px solid var(--edcm-line-soft);
+}
+
+.edcm .edcm__faqitem > summary {
+	position: relative;
+	padding: 14px 36px 14px 0;
+	color: var(--edcm-text);
+}
+
+.edcm .edcm__faqitem > summary::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: 8px;
+	width: 8px;
+	height: 8px;
+	margin-top: -6px;
+	border-right: 2px solid var(--edcm-accent);
+	border-bottom: 2px solid var(--edcm-accent);
+	transform: rotate(45deg);
+	transition: transform 0.15s;
+}
+
+.edcm .edcm__faqitem[open] > summary::after {
+	margin-top: -2px;
+	transform: rotate(-135deg);
+}
+
+.edcm .edcm__faqitem > summary:hover {
+	color: var(--edcm-accent);
+}
+
+.edcm .edcm__faqitem p {
+	margin: 0 0 16px;
+	max-width: 75ch;
+	color: var(--edcm-text);
+}
+
+.edcm .edcm__inner .edcm__disclaimer {
+	margin: 28px 0 0;
+	padding-top: 16px;
+	font-size: 12.5px;
+	color: var(--edcm-muted);
+	border-top: 1px solid var(--edcm-line-soft);
+}
+
+/* ------------------------------------------------------------------ */
+/* Detail dialog                                                       */
+/* ------------------------------------------------------------------ */
+
+.edcm .edcm__dialog {
+	width: min(660px, calc(100vw - 24px));
+	max-width: none;
+	max-height: min(88vh, 780px);
+	max-height: min(88dvh, 780px);
+	margin: auto;
+	padding: 0;
+	overflow: hidden;
+	color: var(--edcm-text);
+	background: var(--edcm-surface);
+	border: 1px solid var(--edcm-line-strong);
+	border-radius: 18px;
+	box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+}
+
+.edcm .edcm__dialog::backdrop {
+	background: rgba(2, 8, 12, 0.74);
+	backdrop-filter: blur(3px);
+}
+
+.edcm .edcm__dlg {
+	display: flex;
+	flex-direction: column;
+	max-height: min(88vh, 780px);
+	max-height: min(88dvh, 780px);
+}
+
+.edcm .edcm__dlghead {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 18px 18px 14px 22px;
+	background: var(--edcm-surface-2);
+	border-bottom: 1px solid var(--edcm-line);
+}
+
+.edcm .edcm__dlgtitles {
+	flex: 1;
+	min-width: 0;
+}
+
+.edcm .edcm__dlgtitle {
+	margin: 0;
+	padding: 0;
+	font-family: var(--edcm-font-heading);
+	font-size: 22px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	line-height: 1.2;
+	text-transform: uppercase;
+	color: var(--edcm-accent);
+}
+
+.edcm .edcm__dlgsub {
+	margin: 4px 0 0;
+	font-size: 13px;
+	color: var(--edcm-muted);
+}
+
+.edcm .edcm__dlgclose {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 40px;
+	height: 40px;
+	padding: 0;
+	color: var(--edcm-accent);
+	background: transparent;
+	border: 1.5px solid var(--edcm-line-strong);
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.edcm .edcm__dlgclose:hover {
+	background: var(--edcm-hover);
+	border-color: var(--edcm-accent);
+}
+
+.edcm .edcm__dlgbody {
+	flex: 1;
+	overflow: auto;
+	padding: 16px 22px 20px;
+	-webkit-overflow-scrolling: touch;
+}
+
+.edcm .edcm__dlgbody p {
+	margin: 0 0 12px;
+}
+
+.edcm .edcm__dlgnote {
+	padding: 10px 12px;
+	font-size: 14px;
+	background: var(--edcm-surface-2);
+	border-left: 3px solid var(--edcm-accent);
+	border-radius: 0 8px 8px 0;
+}
+
+.edcm .edcm__dgroup {
+	margin: 18px 0 8px;
+	font-size: 12px;
+	font-weight: 700;
+	line-height: 20px;
+	letter-spacing: 0.09em;
+	text-transform: uppercase;
+	color: var(--edcm-muted);
+}
+
+.edcm .edcm__dlist {
+	display: grid;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.edcm .edcm__ditem {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 2px 12px;
+	align-items: start;
+	margin: 0;
+	padding: 10px 12px;
+	background: var(--edcm-surface-2);
+	border: 1px solid var(--edcm-line-soft);
+	border-radius: 12px;
+}
+
+.edcm .edcm__ditem .edcm__pill {
+	grid-row: 1 / span 2;
+	margin-top: 1px;
+}
+
+.edcm .edcm__dname {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.35;
+	color: var(--edcm-text);
+}
+
+.edcm .edcm__dname button {
+	padding: 0;
+	font: inherit;
+	color: var(--edcm-accent);
+	background: none;
+	border: 0;
+	cursor: pointer;
+	text-align: left;
+	text-decoration: underline;
+	text-underline-offset: 2px;
+}
+
+.edcm .edcm__dtext {
+	font-size: 13.5px;
+	line-height: 1.5;
+	color: var(--edcm-muted);
+}
+
+.edcm .edcm__dsrc {
+	margin: 6px 0 0;
+	padding-left: 18px;
+	font-size: 13px;
+}
+
+.edcm .edcm__dlgfoot {
+	display: flex;
+	justify-content: space-between;
+	gap: 10px;
+	padding: 12px 22px;
+	background: var(--edcm-surface-2);
+	border-top: 1px solid var(--edcm-line);
+}
+
+.edcm .edcm__dlgfoot {
+	flex-wrap: wrap;
+}
+
+.edcm .edcm__dlgfoot .edcm__btn {
+	flex: 0 1 auto;
+	height: auto;
+	min-height: 40px;
+	padding: 8px 14px;
+	line-height: 1.25;
+	text-align: left;
+	white-space: normal;
+}
+
+.edcm .edcm__ditem--cell {
+	grid-template-columns: 1fr;
+	gap: 6px;
+}
+
+.edcm .edcm__ditem--cell .edcm__pill {
+	grid-row: auto;
+	justify-self: start;
+	margin: 0 0 2px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Full screen                                                         */
+/* ------------------------------------------------------------------ */
+
+/* Block themes: the alignwide / alignfull shortcode option. */
+.edcm.alignfull {
+	border-left: 0;
+	border-right: 0;
+	border-radius: 0;
+}
+
+body.edcm-lock {
+	overflow: hidden !important;
+}
+
+.edcm.is-fs {
+	position: fixed;
+	z-index: 99990;
+	inset: 0;
+	margin: 0;
+	overflow: auto;
+	border: 0;
+	border-radius: 0;
+}
+
+.edcm.is-fs .edcm__scroller {
+	max-height: calc(100vh - 230px);
+	max-height: calc(100dvh - 230px);
+}
+
+/* ------------------------------------------------------------------ */
+/* Narrow containers: cards instead of a grid                          */
+/* ------------------------------------------------------------------ */
+
+@container edcm (max-width: 760px) {
+	.edcm .edcm__mobile-only {
+		display: flex !important;
+	}
+
+	.edcm .edcm__scrollbtns {
+		display: none !important;
+	}
+
+	.edcm .edcm__actions {
+		margin-left: 0;
+	}
+
+	.edcm .edcm__legenddetails dl {
+		grid-template-columns: 1fr;
+		gap: 2px;
+	}
+
+	.edcm .edcm__legenddetails dd {
+		margin-bottom: 8px;
+	}
+
+	.edcm .edcm__scroller,
+	.edcm.edcm--box .edcm__scroller {
+		max-height: none;
+		overflow: visible;
+		background: none;
+		border: 0;
+		border-radius: 0;
+	}
+
+	.edcm.is-fs .edcm__scroller {
+		max-height: none;
+	}
+
+	.edcm .edcm__pin {
+		display: none !important;
+	}
+
+	.edcm .edcm__inner .edcm__table {
+		display: block;
+		width: auto;
+		min-width: 0;
+	}
+
+	.edcm .edcm__inner .edcm__table caption {
+		display: block;
+	}
+
+	/* Keep the header row for assistive tech but hide it visually. */
+	.edcm .edcm__inner .edcm__table thead {
+		display: block;
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+	}
+
+	.edcm .edcm__inner .edcm__table tbody {
+		display: grid;
+		gap: 12px;
+	}
+
+	.edcm .edcm__inner .edcm__table tbody tr.edcm__row {
+		display: block;
+		overflow: hidden;
+		background: var(--edcm-surface);
+		border: 1px solid var(--edcm-line);
+		border-radius: var(--edcm-radius);
+	}
+
+	.edcm .edcm__inner .edcm__table th.edcm__rowhead {
+		position: relative;
+		z-index: auto;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-areas:
+			"btn badge"
+			"sys sys"
+			"notes notes";
+		align-items: start;
+		gap: 4px 10px;
+		width: auto;
+		padding: 14px 14px 12px;
+		background-color: var(--edcm-surface-2);
+		border: 0;
+		border-bottom: 1px solid var(--edcm-line);
+	}
+
+	.edcm .edcm__inner .edcm__table tbody tr:first-child th.edcm__rowhead {
+		border-top: 0;
+	}
+
+	.edcm .edcm__rowbtn {
+		grid-area: btn;
+		padding: 0;
+	}
+
+	.edcm .edcm__name {
+		display: block;
+		-webkit-line-clamp: unset;
+		font-size: 17px;
+		line-height: 1.25;
+	}
+
+	.edcm .edcm__owner {
+		margin-top: 3px;
+		font-size: 13px;
+		white-space: normal;
+	}
+
+	.edcm .edcm__badge {
+		position: static;
+		grid-area: badge;
+		margin-top: 2px;
+		transform: none;
+	}
+
+	.edcm .edcm__sys,
+	.edcm .edcm__notes {
+		display: block;
+		font-size: 13px;
+		line-height: 1.45;
+	}
+
+	.edcm .edcm__sys {
+		grid-area: sys;
+		font-weight: 600;
+		color: var(--edcm-text);
+	}
+
+	.edcm .edcm__notes {
+		grid-area: notes;
+		color: var(--edcm-muted);
+	}
+
+	.edcm .edcm__inner .edcm__table td.edcm__cell {
+		display: grid;
+		grid-template-columns: 1fr auto;
+		grid-template-areas:
+			"name pill"
+			"detail detail";
+		align-items: center;
+		gap: 3px 10px;
+		height: auto;
+		padding: 10px 14px;
+		text-align: left;
+		border-top: 1px solid var(--edcm-line-soft);
+		cursor: pointer;
+	}
+
+	.edcm .edcm__inner .edcm__table th.edcm__rowhead + td.edcm__cell {
+		border-top: 0;
+	}
+
+	/* Show only networks that work, unless the visitor asks for all. */
+	.edcm[data-only-supported="1"] .edcm__inner .edcm__table td.edcm__cell[data-code="NO"] {
+		display: none;
+	}
+
+	.edcm .edcm__netlabel {
+		display: block;
+		grid-area: name;
+		font-size: 15px;
+		font-weight: 600;
+		color: var(--edcm-text);
+	}
+
+	.edcm .edcm__cellbtn {
+		grid-area: pill;
+		padding: 0;
+	}
+
+	.edcm .edcm__cell .edcm__pill {
+		height: 32px;
+		padding: 0 12px 0 8px;
+	}
+
+	.edcm .edcm__cell .edcm__pill .edcm__lbl {
+		position: static !important;
+		width: auto;
+		height: auto;
+		margin: 0;
+		overflow: visible;
+		clip: auto;
+		clip-path: none;
+	}
+
+	.edcm .edcm__detail {
+		display: -webkit-box;
+		grid-area: detail;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+		font-size: 13.5px;
+		line-height: 1.45;
+		color: var(--edcm-muted);
+	}
+
+	.edcm .edcm__detail:empty {
+		display: none;
+	}
+
+	.edcm .edcm__field,
+	.edcm .edcm__field--search {
+		flex: 1 1 100%;
+	}
+
+	.edcm .edcm__field:not(.edcm__field--search) {
+		flex: 1 1 calc(50% - 5px);
+	}
+
+	.edcm .edcm__colpop {
+		left: 0;
+		right: auto;
+	}
+
+	.edcm .edcm__netgrid {
+		grid-template-columns: 1fr;
+	}
+
+	/* Theme-proof versions of the card rules above (see "Theme-proofing"). */
+	:is(#edcm-x, .edcm) .edcm__inner .edcm__table {
+		width: auto !important;
+	}
+
+	:is(#edcm-x, .edcm) .edcm__inner .edcm__table tbody tr.edcm__row {
+		background-color: var(--edcm-surface) !important;
+	}
+
+	:is(#edcm-x, .edcm) .edcm__inner .edcm__table th.edcm__rowhead {
+		padding: 14px 14px 12px !important;
+		background-color: var(--edcm-surface-2) !important;
+		border: 0 !important;
+		border-bottom: 1px solid var(--edcm-line) !important;
+	}
+
+	/* Every cell after the first gets a divider, including those in the first card. */
+	:is(#edcm-x, .edcm) .edcm__inner .edcm__table tbody tr.edcm__row td.edcm__cell {
+		padding: 10px 14px !important;
+		text-align: left !important;
+		border-top: 1px solid var(--edcm-line-soft) !important;
+	}
+
+	:is(#edcm-x, .edcm) .edcm__inner .edcm__table tbody tr.edcm__row th.edcm__rowhead + td.edcm__cell {
+		border-top: 0 !important;
+	}
+}
+
+/* The dialog lives outside the measured box, so size it by viewport. */
+@media (max-width: 560px) {
+	.edcm .edcm__dialog {
+		width: calc(100vw - 16px);
+		max-height: calc(100vh - 16px);
+		max-height: calc(100dvh - 16px);
+		border-radius: 16px;
+	}
+
+	.edcm .edcm__dlg {
+		max-height: calc(100vh - 16px);
+		max-height: calc(100dvh - 16px);
+	}
+
+	.edcm .edcm__dlgtitle {
+		font-size: 19px;
+	}
+
+	.edcm .edcm__dlghead {
+		padding: 14px 12px 12px 16px;
+	}
+
+	.edcm .edcm__dlgbody {
+		padding: 14px 16px 18px;
+	}
+
+	.edcm .edcm__dlgfoot {
+		padding: 10px 16px;
+	}
+
+	.edcm {
+		border-radius: 16px;
+	}
+}
+
+@container edcm (max-width: 420px) {
+	.edcm .edcm__field:not(.edcm__field--search) {
+		flex: 1 1 100%;
+	}
+
+	.edcm .edcm__tab {
+		flex: 1 1 auto;
+		justify-content: center;
+		padding: 8px 10px;
+		font-size: 13px;
+	}
+
+	.edcm .edcm__actions {
+		width: 100%;
+	}
+
+	.edcm .edcm__actions .edcm__btn {
+		flex: 1;
+		justify-content: center;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.edcm *,
+	.edcm *::before,
+	.edcm *::after {
+		transition: none !important;
+		scroll-behavior: auto !important;
+	}
+}
+
+@media print {
+	.edcm {
+		color: #000;
+		background: #fff;
+		border: 0;
+	}
+
+	.edcm .edcm__toolbar,
+	.edcm .edcm__tabs,
+	.edcm .edcm__statusrow {
+		display: none !important;
+	}
+
+	.edcm .edcm__panel[hidden] {
+		display: block !important;
+	}
+
+	.edcm .edcm__scroller,
+	.edcm.edcm--box .edcm__scroller {
+		max-height: none;
+		overflow: visible;
+	}
+
+	.edcm .edcm__pin {
+		display: none !important;
+	}
+}
