@@ -3,7 +3,7 @@
  * Plugin Name:       Electric Duo EV Charging Matrix
  * Plugin URI:        https://theelectricduo.com/
  * Description:       Interactive, SEO-friendly matrix showing which EV charging apps and car brands work with which US charging networks (Tesla Supercharger, Electrify America, IONNA, EVgo, ChargePoint, Walmart and more). Dark theme matched to TheElectricDuo.com. Use the [ev_charging_matrix] shortcode.
- * Version:           1.1.5
+ * Version:           1.1.6
  * Requires at least: 5.8
  * Requires PHP:      7.4
  * Author:            The Electric Duo
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'EDCM_VERSION', '1.1.5' );
+define( 'EDCM_VERSION', '1.1.6' );
 define( 'EDCM_FILE', __FILE__ );
 define( 'EDCM_DIR', plugin_dir_path( __FILE__ ) );
 define( 'EDCM_URL', plugin_dir_url( __FILE__ ) );

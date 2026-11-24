@@ -152,6 +152,7 @@
 				q: '',
 				cat: '',
 				net: '',
+				pick: '',
 				cur: null
 			};
 			qsa('thead th.edcm__nethead', el_).forEach(function (th) {
@@ -268,6 +269,9 @@
 				}
 				if (ok && p.net) {
 					ok = codeOf(r, p.net) !== 'NO';
+				}
+				if (ok && p.pick) {
+					ok = r.getAttribute('data-row') === p.pick;
 				}
 				r.hidden = !ok;
 				if (ok) {
@@ -676,6 +680,7 @@
 			var search = qs('.edcm__search', p.el);
 			var cat = qs('.edcm__cat', p.el);
 			var netsel = qs('.edcm__netsel', p.el);
+			var pick = qs('.edcm__pick', p.el);
 			var timer;
 
 			if (search) {
@@ -696,6 +701,12 @@
 			if (netsel) {
 				netsel.addEventListener('change', function () {
 					p.net = netsel.value;
+					applyFilters(p);
+				});
+			}
+			if (pick) {
+				pick.addEventListener('change', function () {
+					p.pick = pick.value;
 					applyFilters(p);
 				});
 			}

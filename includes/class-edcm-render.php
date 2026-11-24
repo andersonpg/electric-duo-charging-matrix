@@ -537,7 +537,7 @@ class EDCM_Render {
 					<?php echo self::icon( 'edcm-i-search', 'edcm__fieldicon' ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					<input type="search" class="edcm__search" autocomplete="off" placeholder="<?php echo esc_attr( sprintf( /* translators: %s: plural entity name. */ __( 'Search %s…', 'ed-charging-matrix' ), $plural ) ); ?>">
 				</label>
-				<label class="edcm__field edcm-js-only">
+				<label class="edcm__field edcm__field--cat edcm-js-only">
 					<span class="edcm-sr"><?php esc_html_e( 'Category', 'ed-charging-matrix' ); ?></span>
 					<select class="edcm__cat">
 						<option value=""><?php esc_html_e( 'All categories', 'ed-charging-matrix' ); ?></option>
@@ -546,12 +546,30 @@ class EDCM_Render {
 						<?php endforeach; ?>
 					</select>
 				</label>
-				<label class="edcm__field edcm-js-only">
+				<label class="edcm__field edcm__field--netsel edcm-js-only">
 					<span class="edcm-sr"><?php esc_html_e( 'Works with network', 'ed-charging-matrix' ); ?></span>
 					<select class="edcm__netsel">
 						<option value=""><?php esc_html_e( 'Works with any network', 'ed-charging-matrix' ); ?></option>
 						<?php foreach ( $networks as $net ) : ?>
 							<option value="<?php echo esc_attr( $net['id'] ); ?>"><?php echo esc_html( $net['name'] ); ?></option>
+						<?php endforeach; ?>
+					</select>
+				</label>
+				<?php
+				$pick_rows = $sheet['rows'];
+				usort(
+					$pick_rows,
+					static function ( $a, $b ) {
+						return strcasecmp( (string) $a['name'], (string) $b['name'] );
+					}
+				);
+				?>
+				<label class="edcm__field edcm__field--pick edcm__mobile-only edcm-js-only">
+					<span class="edcm-sr"><?php echo esc_html( sprintf( /* translators: %s: singular entity name, e.g. "app". */ __( 'Select %s', 'ed-charging-matrix' ), $sheet['entity_singular'] ) ); ?></span>
+					<select class="edcm__pick">
+						<option value=""><?php echo esc_html( sprintf( /* translators: %s: plural entity name, e.g. "apps". */ __( 'All %s', 'ed-charging-matrix' ), strtolower( $plural ) ) ); ?></option>
+						<?php foreach ( $pick_rows as $prow ) : ?>
+							<option value="<?php echo esc_attr( $prow['id'] ); ?>"><?php echo esc_html( $prow['name'] ); ?></option>
 						<?php endforeach; ?>
 					</select>
 				</label>

@@ -1430,6 +1430,23 @@ body.edcm-lock {
 		display: flex !important;
 	}
 
+	.edcm .edcm__field--search,
+	.edcm .edcm__field--cat,
+	.edcm .edcm__field--netsel,
+	.edcm .edcm__cols,
+	.edcm .edcm__actions {
+		display: none !important;
+	}
+
+	.edcm .edcm__field--pick {
+		flex: 1 1 100%;
+		max-width: none;
+	}
+
+	.edcm .edcm__field--pick select {
+		width: 100%;
+	}
+
 	.edcm .edcm__scrollbtns {
 		display: none !important;
 	}

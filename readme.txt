@@ -4,7 +4,7 @@ Tags: ev, electric vehicle, charging, charging network, tesla supercharger
 Requires at least: 5.8
 Tested up to: 7.2
 Requires PHP: 7.4
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -78,6 +78,9 @@ The plugin uses your theme's heading font variable when present and falls back t
 Automaker help pages, network announcements and press coverage. See DATA-REVIEW.md in the plugin folder for every change made in the October 2026 review and the list of cells that could not be independently verified.
 
 == Changelog ==
+
+= 1.1.6 =
+* Mobile UI: simplified the toolbar on narrow/mobile screens (<= 760px) by hiding the search box, category filter, network filter, Networks column picker, CSV download, and Full screen buttons, and replacing them with an alphabetical App or Car Brand selector dropdown (matching the active Charging Apps or Car Brands tab).
 
 = 1.1.5 =
 * Data audit (Nov 23, 2026):
